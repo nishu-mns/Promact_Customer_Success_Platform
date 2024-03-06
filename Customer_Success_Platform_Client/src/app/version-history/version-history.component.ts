@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { VersionHistory } from '../Models/VersionHistory';
 import { VersionHistoryService } from '../Service/version-history.service';
+import { VersionHistoryEditModalComponent } from '../version-history-edit-modal/version-history-edit-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-version-history',
@@ -22,7 +24,8 @@ export class VersionHistoryComponent implements OnInit {
     approvedBy: ''
   };
 
-  constructor(private versionHistoryService: VersionHistoryService) { }
+  constructor(private versionHistoryService: VersionHistoryService,
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getVersionHistories();
@@ -59,18 +62,8 @@ export class VersionHistoryComponent implements OnInit {
       });
   }
 
-  editField(event: any, field: string, history: VersionHistory): void {
-    const target = event.target;
-    const value = target.textContent;
-    target.innerHTML = `<input type='text' value='${value}' (blur)='updateValue($event, "${field}", ${history.id})'>`;
-  }
-
   saveChanges(): void {
-    this.versionHistories.forEach(history => {
-      this.versionHistoryService.updateVersionHistory(history)
-        .subscribe(updatedHistory => console.log('Version history updated successfully:', updatedHistory),
-          error => console.error('Error updating version history:', error));
-    });
+    
   }
 
   deleteVersionHistory(history: VersionHistory): void {
@@ -84,11 +77,14 @@ export class VersionHistoryComponent implements OnInit {
     }
   }
 
-  updateValue(event: any, field: keyof VersionHistory, id: string): void {
-    const newValue = event.target.value.trim();
-    const index = this.versionHistories.findIndex(h => h.id === id);
-    if (index !== -1) {
-      this.versionHistories[index][field] = newValue;
-    }
+  openEditModal(history: VersionHistory) {
+    const modalRef = this.modalService.open(VersionHistoryEditModalComponent, { centered: true });
+    modalRef.componentInstance.versionHistory = { ...history }; 
+    modalRef.componentInstance.saveChangesEvent.subscribe((updatedHistory: VersionHistory) => {
+      const index = this.versionHistories.findIndex(h => h.id === updatedHistory.id);
+      if (index !== -1) {
+        this.versionHistories[index] = updatedHistory; 
+      }
+    });
   }
 }

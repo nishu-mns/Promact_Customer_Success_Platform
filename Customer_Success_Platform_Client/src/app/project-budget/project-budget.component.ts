@@ -2,17 +2,31 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProjectBudget } from '../Models/ProjectBudget';
 import { ProjectBudgetService } from '../Service/project-budget.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProjectBudgetEditModalComponent } from '../project-budget-edit-modal/project-budget-edit-modal.component';
 
 @Component({
   selector: 'app-project-budget',
   templateUrl: './project-budget.component.html',
   styleUrl: './project-budget.component.css'
 })
-export class ProjectBudgetComponent {
+export class ProjectBudgetComponent implements OnInit {
 
-  projectbudget: Array<ProjectBudget> = [];
+  projectbudget: ProjectBudget[] = [];
+  isNewRow: boolean = false;
+  newProjectBudget: ProjectBudget = {
+    id: '',
+    type:0,
+    durationInMonths:0,
+    budgetedHours:0,
+    ContractDuration:0,
+    BudgetedCost:0,
+    Currency:'',
+    ProjectId:''
+  };
 
-  constructor(private projectbudgetservice: ProjectBudgetService) { }
+  constructor(private projectbudgetservice: ProjectBudgetService,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.getProjectBudget();
@@ -26,20 +40,8 @@ export class ProjectBudgetComponent {
     })
   }
 
-  editField(event: any, field: string, projectBudget: ProjectBudget) {
-    const target = event.target;
-    const value = target.textContent;
-    target.innerHTML = `<input type='text' value='${value}' (blur)='updateValue($event, "${field}", ${projectBudget.id})'>`;
-  }
-
-  saveChanges() {
-    this.projectbudget.forEach(projectBudget => {
-      this.projectbudgetservice.updateProjectBudget(projectBudget).subscribe(
-        updatedBudget => console.log('Project budget updated successfully:', updatedBudget),
-        error => console.error('Error updating project budget:', error)
-      );
-    });
-
+  saveChanges(): void {
+    
   }
 
   deleteProjectBudget(projectBudget: ProjectBudget) {
@@ -49,27 +51,6 @@ export class ProjectBudgetComponent {
       });
     }
   }
-
-  updateValue(event: any, field: keyof ProjectBudget, id: string) {
-    const newValue = event.target.value.trim(); // Trim any whitespace
-    const index = this.projectbudget.findIndex(pb => pb.id === id);
-    if (index !== -1) {
-      // Use keyof to ensure the field exists on ProjectBudget interface
-      this.projectbudget[index][field] = newValue;
-    }
-  }
-
-  isNewRow: boolean = false;
-  newProjectBudget: ProjectBudget = {
-    id: '',
-    type: 0,
-    durationInMonths: 0,
-    budgetedHours: 0,
-    ContractDuration: 0,
-    BudgetedCost: 0,
-    Currency: '',
-    ProjectId: ''
-  };
 
   addNewRow() {
     this.isNewRow = true;
@@ -98,6 +79,15 @@ export class ProjectBudgetComponent {
     );
   }
 
-
+  openEditModal(budget: ProjectBudget) {
+    const modalRef = this.modalService.open(ProjectBudgetEditModalComponent, { centered: true });
+    modalRef.componentInstance.projectBudget = { ...budget }; 
+    modalRef.componentInstance.saveChangesEvent.subscribe((updatedbudget: ProjectBudget) => {
+      const index = this.projectbudget.findIndex(h => h.id === updatedbudget.id);
+      if (index !== -1) {
+        this.projectbudget[index] = updatedbudget; 
+      }
+    });
+  }
 
 }

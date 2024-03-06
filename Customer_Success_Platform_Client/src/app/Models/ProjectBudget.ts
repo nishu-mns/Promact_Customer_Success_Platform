@@ -1,5 +1,3 @@
-// import { Project } from "./Project";
-
 export interface ProjectBudget{
     id: string,
     type:Number,
@@ -8,6 +6,5 @@ export interface ProjectBudget{
     ContractDuration:Number,
     BudgetedCost:Number,
     Currency:string,
-    ProjectId:string,
-    // projects?: Project[];
+    ProjectId:string
 }

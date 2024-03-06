@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuditHistory } from '../Models/AuditHistory';
 import { AuditHistoryService } from '../Service/audit-history.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuditHistoryEditModalComponent } from '../audit-history-edit-modal/audit-history-edit-modal.component';
 
 @Component({
   selector: 'app-audit-history',
@@ -8,6 +10,10 @@ import { AuditHistoryService } from '../Service/audit-history.service';
   styleUrls: ['./audit-history.component.css']
 })
 export class AuditHistoryComponent implements OnInit {
+  
+  constructor(private auditHistoryService: AuditHistoryService, 
+    private modalService: NgbModal) { }
+
   auditHistories: AuditHistory[] = [];
   isNewRow: boolean = false;
   newAuditHistory: AuditHistory = {
@@ -19,9 +25,7 @@ export class AuditHistoryComponent implements OnInit {
     commentQueries: '',
     actionItem: ''
   };
-
-  constructor(private auditHistoryService: AuditHistoryService) { }
-
+  
   ngOnInit(): void {
     this.getAuditHistories();
   }
@@ -55,18 +59,8 @@ export class AuditHistoryComponent implements OnInit {
       });
   }
 
-  editField(event: any, field: string, history: AuditHistory): void {
-    const target = event.target;
-    const value = target.textContent;
-    target.innerHTML = `<input type='text' value='${value}' (blur)='updateValue($event, "${field}", "${history.id}")'>`;
-  }
-
   saveChanges(): void {
-    this.auditHistories.forEach(history => {
-      this.auditHistoryService.updateAuditHistory(history)
-        .subscribe(updatedHistory => console.log('Audit history updated successfully:', updatedHistory),
-          error => console.error('Error updating audit history:', error));
-    });
+    
   }
 
   deleteAuditHistory(history: AuditHistory): void {
@@ -80,14 +74,14 @@ export class AuditHistoryComponent implements OnInit {
     }
   }
 
-  updateValue(event: any, field: keyof AuditHistory, id: string): void {
-    const newValue = event.target.value.trim();
-    console.log(newValue);
-    console.log(id);
-    
-    const index = this.auditHistories.findIndex(h => h.id === id);
-    if (index !== -1) {
-      this.auditHistories[index][field] = newValue;
-    }
+  openEditModal(history: AuditHistory) {
+    const modalRef = this.modalService.open(AuditHistoryEditModalComponent, { centered: true });
+    modalRef.componentInstance.auditHistory = { ...history }; 
+    modalRef.componentInstance.saveChangesEvent.subscribe((updatedHistory: AuditHistory) => {
+      const index = this.auditHistories.findIndex(h => h.id === updatedHistory.id);
+      if (index !== -1) {
+        this.auditHistories[index] = updatedHistory; 
+      }
+    });
   }
 }

@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h4 class="modal-title">Edit Audit History</h4>
+    <button type="button" class="close ms-4" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group mb-3">
+        <label>Date of Audit</label>
+        <input type="date" class="form-control" [(ngModel)]="auditHistory.dateOfAudit" name="dateOfAudit">
+      </div>
+      <div class="form-group mb-3">
+        <label>Reviewed by</label>
+        <input type="text" class="form-control" [(ngModel)]="auditHistory.reviewedBy" name="reviewedBy">
+      </div>
+      <div class="form-group mb-3">
+        <label>Status</label>
+        <input type="text" class="form-control" [(ngModel)]="auditHistory.status" name="status">
+      </div>
+      <div class="form-group mb-3">
+        <label>Reviewed section</label>
+        <input type="text" class="form-control" [(ngModel)]="auditHistory.reviewedSection" name="reviewedSection">
+      </div>
+      <div class="form-group mb-3">
+        <label>Comment Queries</label>
+        <input type="text" class="form-control" [(ngModel)]="auditHistory.commentQueries" name="commentQueries">
+      </div>
+      <div class="form-group mb-3">
+        <label>Action Item</label>
+        <input type="text" class="form-control" [(ngModel)]="auditHistory.actionItem" name="actionItem">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Cancel')">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="saveChanges()">Save Changes</button>
+  </div>
+  

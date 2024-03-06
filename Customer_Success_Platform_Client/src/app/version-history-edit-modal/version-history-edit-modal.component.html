@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <h4 class="modal-title">Edit Version History</h4>
+    <button type="button" class="close ms-4" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group mb-3">
+        <label>Version</label>
+        <input type="text" class="form-control" [(ngModel)]="versionHistory.version" name="version">
+      </div>
+      <div class="form-group mb-3">
+        <label>Type</label>
+        <input type="text" class="form-control" [(ngModel)]="versionHistory.type" name="type">
+      </div>
+      <div class="form-group mb-3">
+        <label>Change</label>
+        <input type="text" class="form-control" [(ngModel)]="versionHistory.change" name="change">
+      </div>
+      <div class="form-group mb-3">
+        <label>Change Reason</label>
+        <input type="text" class="form-control" [(ngModel)]="versionHistory.changeReason" name="changeReason">
+      </div>
+      <div class="form-group mb-3">
+        <label>Created By</label>
+        <input type="text" class="form-control" [(ngModel)]="versionHistory.createdBy" name="createdBy">
+      </div>
+      <div class="form-group mb-3">
+        <label>Revision Date</label>
+        <input type="date" class="form-control" [(ngModel)]="versionHistory.revisionDate" name="revisionDate">
+      </div>
+      <div class="form-group mb-3">
+        <label>Approval Date</label>
+        <input type="date" class="form-control" [(ngModel)]="versionHistory.approvalDate" name="approvalDate">
+      </div>
+      <div class="form-group mb-3">
+        <label>Approved By</label>
+        <input type="text" class="form-control" [(ngModel)]="versionHistory.approvedBy" name="approvedBy">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Cancel')">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="saveChanges()">Save Changes</button>
+  </div>
+  

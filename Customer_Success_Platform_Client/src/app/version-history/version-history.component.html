@@ -18,15 +18,16 @@
       <tbody>
         <tr *ngFor="let history of versionHistories">
           <!-- <td>{{ history.id }}</td> -->
-          <td (dblclick)="editField($event, 'version', history)">{{ history.version }}</td>
-          <td (dblclick)="editField($event, 'type', history)">{{ history.type }}</td>
-          <td (dblclick)="editField($event, 'change', history)">{{ history.change }}</td>
-          <td (dblclick)="editField($event, 'changeReason', history)">{{ history.changeReason }}</td>
-          <td (dblclick)="editField($event, 'createdBy', history)">{{ history.createdBy }}</td>
-          <td (dblclick)="editField($event, 'revisionDate', history)">{{ history.revisionDate | date }}</td>
-          <td (dblclick)="editField($event, 'approvalDate', history)">{{ history.approvalDate ? (history.approvalDate | date) : '-' }}</td>
-          <td (dblclick)="editField($event, 'approvedBy', history)">{{ history.approvedBy }}</td>
+          <td>{{ history.version }}</td>
+          <td>{{ history.type }}</td>
+          <td>{{ history.change }}</td>
+          <td>{{ history.changeReason }}</td>
+          <td>{{ history.createdBy }}</td>
+          <td>{{ history.revisionDate | date }}</td>
+          <td>{{ history.approvalDate ? (history.approvalDate | date) : '-' }}</td>
+          <td>{{ history.approvedBy }}</td>
           <td>
+            <button class="btn btn-primary me-2" (click)="openEditModal(history)">Edit</button>
             <button class="btn btn-danger" (click)="deleteVersionHistory(history)">Delete</button>
           </td>
         </tr>
@@ -44,7 +45,7 @@
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-primary" (click)="addNewRow()">+</button>
+    <button class="btn btn-primary me-2" (click)="addNewRow()">+</button>
     <button class="btn btn-success" (click)="saveChanges()">Save Changes</button>
   </div>
   

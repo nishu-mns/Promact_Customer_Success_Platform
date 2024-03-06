@@ -16,13 +16,14 @@
       <tbody>
         <tr *ngFor="let history of auditHistories">
           <!-- <td>{{ history.id }}</td> -->
-          <td (dblclick)="editField($event, 'dateOfAudit', history)">{{ history.dateOfAudit | date }}</td>
-          <td (dblclick)="editField($event, 'reviewedBy', history)">{{ history.reviewedBy }}</td>
-          <td (dblclick)="editField($event, 'status', history)">{{ history.status }}</td>
-          <td (dblclick)="editField($event, 'reviewedSection', history)">{{ history.reviewedSection }}</td>
-          <td (dblclick)="editField($event, 'commentQueries', history)">{{ history.commentQueries }}</td>
-          <td (dblclick)="editField($event, 'actionItem', history)">{{ history.actionItem }}</td>
+          <td>{{ history.dateOfAudit | date }}</td>
+          <td>{{ history.reviewedBy }}</td>
+          <td>{{ history.status }}</td>
+          <td>{{ history.reviewedSection }}</td>
+          <td>{{ history.commentQueries }}</td>
+          <td>{{ history.actionItem }}</td>
           <td>
+            <button class="btn btn-primary me-2" (click)="openEditModal(history)">Edit</button>
             <button class="btn btn-danger" (click)="deleteAuditHistory(history)">Delete</button>
           </td>
         </tr>
@@ -38,7 +39,6 @@
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-primary" (click)="addNewRow()">+</button>
+    <button class="btn btn-primary me-2" (click)="addNewRow()">+</button>
     <button class="btn btn-success" (click)="saveChanges()">Save Changes</button>
   </div>
-  
