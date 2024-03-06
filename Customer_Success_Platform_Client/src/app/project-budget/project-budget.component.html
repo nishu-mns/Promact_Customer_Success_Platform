@@ -1,0 +1,39 @@
+<div class="container py-5">
+  <h3 class="text-center text-uppercase">List of Project-Budgets</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr class="text-center text-uppercase">
+        <!-- <th>ID</th> -->
+        <th>Type</th>
+        <th>Duration in Months</th>
+        <th>Budgeted Hours</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of projectbudget">
+        <!-- <td>{{item.id}}</td> -->
+        <td (dblclick)="editField($event, 'type', item)">{{ item.type === 0 ? "Fixed Budget" : "Monthly" }}</td>
+        <td (dblclick)="editField($event, 'durationInMonths', item)">{{item.durationInMonths}}</td>
+        <td (dblclick)="editField($event, 'budgetedHours', item)">{{item.budgetedHours}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteProjectBudget(item)">Delete</button>
+        </td>
+      </tr>
+      <tr *ngIf="isNewRow">
+        <td><input type="number" [(ngModel)]="newProjectBudget.type"  min="0" max="1" required>
+          <div *ngIf="newProjectBudget.type !== null && !(newProjectBudget.type === 0 || newProjectBudget.type === 1)" class="text-danger">
+            Please enter either 0 or 1.
+          </div>
+        </td>
+        <!-- Input fields for other columns -->
+        <td><input type="number" [(ngModel)]="newProjectBudget.durationInMonths"></td>
+        <td><input type="number" [(ngModel)]="newProjectBudget.budgetedHours"></td>
+        <td><input type="text" [(ngModel)]="newProjectBudget.ProjectId" placeholder="Enter Project ID"></td>
+        <td><button class="btn btn-success" (click)="saveNewRow()">Add row</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="addNewRow()">+</button>
+  <button class="btn btn-success" (click)="saveChanges()">Save Changes</button>
+</div>

@@ -1,0 +1,44 @@
+<div class="container py-5">
+    <h3 class="text-center text-uppercase">List of Audit Histories</h3>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr class="text-center text-uppercase">
+          <!-- <th>ID</th> -->
+          <th>Date of Audit</th>
+          <th>Reviewed By</th>
+          <th>Status</th>
+          <th>Reviewed Section</th>
+          <th>Comment Queries</th>
+          <th>Action Item</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let history of auditHistories">
+          <!-- <td>{{ history.id }}</td> -->
+          <td (dblclick)="editField($event, 'dateOfAudit', history)">{{ history.dateOfAudit | date }}</td>
+          <td (dblclick)="editField($event, 'reviewedBy', history)">{{ history.reviewedBy }}</td>
+          <td (dblclick)="editField($event, 'status', history)">{{ history.status }}</td>
+          <td (dblclick)="editField($event, 'reviewedSection', history)">{{ history.reviewedSection }}</td>
+          <td (dblclick)="editField($event, 'commentQueries', history)">{{ history.commentQueries }}</td>
+          <td (dblclick)="editField($event, 'actionItem', history)">{{ history.actionItem }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteAuditHistory(history)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="isNewRow">
+          <!-- <td><input type="text" [(ngModel)]="newAuditHistory.id"></td> -->
+          <td><input type="date" [(ngModel)]="newAuditHistory.dateOfAudit"></td>
+          <td><input type="text" [(ngModel)]="newAuditHistory.reviewedBy"></td>
+          <td><input type="text" [(ngModel)]="newAuditHistory.status"></td>
+          <td><input type="text" [(ngModel)]="newAuditHistory.reviewedSection"></td>
+          <td><input type="text" [(ngModel)]="newAuditHistory.commentQueries"></td>
+          <td><input type="text" [(ngModel)]="newAuditHistory.actionItem"></td>
+          <td><button class="btn btn-success" (click)="saveNewRow()">Add row</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="addNewRow()">+</button>
+    <button class="btn btn-success" (click)="saveChanges()">Save Changes</button>
+  </div>
+  
