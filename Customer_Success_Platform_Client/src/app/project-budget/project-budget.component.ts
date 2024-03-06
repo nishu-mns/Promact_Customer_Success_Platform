@@ -35,8 +35,8 @@ export class ProjectBudgetComponent implements OnInit {
   getProjectBudget() {
     this.projectbudgetservice.getProjectBudgets().subscribe(res => {
       this.projectbudget = res.items;
-      console.log(this.projectbudget);
-      console.log(res);
+      // console.log(this.projectbudget);
+      // console.log(res);
     })
   }
 

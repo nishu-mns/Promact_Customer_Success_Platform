@@ -18,6 +18,7 @@ import { EscalationMatrixComponent } from './escalation-matrix/escalation-matrix
 import { AuditHistoryEditModalComponent } from './audit-history-edit-modal/audit-history-edit-modal.component';
 import { VersionHistoryEditModalComponent } from './version-history-edit-modal/version-history-edit-modal.component';
 import { ProjectBudgetEditModalComponent } from './project-budget-edit-modal/project-budget-edit-modal.component';
+import { PhaseMilestoneEditModalComponent } from './phase-milestone-edit-modal/phase-milestone-edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ProjectBudgetEditModalComponent } from './project-budget-edit-modal/pro
     EscalationMatrixComponent,
     AuditHistoryEditModalComponent,
     VersionHistoryEditModalComponent,
-    ProjectBudgetEditModalComponent
+    ProjectBudgetEditModalComponent,
+    PhaseMilestoneEditModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,40 @@
-<p>phase-milestone works!</p>
+<div class="container py-5">
+    <h3 class="text-center text-uppercase">List of Phase Milestones</h3>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr class="text-center text-uppercase">
+          <th>Title</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Description</th>
+          <th>Comment</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let milestone of phaseMilestones">
+          <td>{{ milestone.Title }}</td>
+          <td>{{ milestone.StartDate | date }}</td>
+          <td>{{ milestone.EndDate | date }}</td>
+          <td>{{ milestone.Description }}</td>
+          <td>{{ milestone.Comments }}</td>
+          <td>
+            <button class="btn btn-primary me-2" (click)="openEditModal(milestone)">Edit</button>
+            <button class="btn btn-danger" (click)="deletePhaseMilestone(milestone)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="isNewRow">
+          <td><input type="text" [(ngModel)]="newPhaseMilestone.Title"></td>
+          <td><input type="date" [(ngModel)]="newPhaseMilestone.StartDate"></td>
+          <td><input type="date" [(ngModel)]="newPhaseMilestone.EndDate"></td>
+          <td><input type="text" [(ngModel)]="newPhaseMilestone.Description"></td>
+          <td><input type="text" [(ngModel)]="newPhaseMilestone.Comments"></td>
+          <td><input type="text" [(ngModel)]="newPhaseMilestone.ProjectId" placeholder="Enter Project Id here"></td>
+          <td><button class="btn btn-success" (click)="saveNewRow()">Add row</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary me-2" (click)="addNewRow()">+</button>
+    <button class="btn btn-success" (click)="saveChanges()">Save Changes</button>
+  </div>
+  
