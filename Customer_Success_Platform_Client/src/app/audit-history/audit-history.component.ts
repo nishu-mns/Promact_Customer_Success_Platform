@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuditHistory } from '../Models/AuditHistory';
 import { AuditHistoryService } from '../Service/audit-history.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuditHistoryEditModalComponent } from '../audit-history-edit-modal/audit-history-edit-modal.component';
+import jsPDF from 'jspdf';
+// import * as jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
 
 @Component({
   selector: 'app-audit-history',
@@ -84,4 +88,8 @@ export class AuditHistoryComponent implements OnInit {
       }
     });
   }
+
+  
+  
+  
 }

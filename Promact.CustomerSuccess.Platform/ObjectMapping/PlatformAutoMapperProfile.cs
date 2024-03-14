@@ -36,5 +36,29 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<CreateVersionHistoryDto, VersionHistory>();
         CreateMap<UpdateVersionHistoryDto, VersionHistory>();
         CreateMap<VersionHistory, VersionHistoryDto>().ReverseMap();
+
+        CreateMap<CreateProjectResourceDto, ProjectResources>();
+        CreateMap<UpdateProjectResourceDto, ProjectResources>();
+        CreateMap<ProjectResources, ProjectResourcesDto>().ReverseMap();
+
+        CreateMap<CreateClientFeedbackDto, ClientFeedback>();
+        CreateMap<UpdateClientFeedbackDto, ClientFeedback>();
+        CreateMap<ClientFeedback, ClientFeedbackDto>().ReverseMap();
+
+        CreateMap<CreateApprovedTeamDto, ApprovedTeam>();
+        CreateMap<UpdateApprovedTeamDto, ApprovedTeam>();
+        CreateMap<ApprovedTeam, ApprovedTeamDto>().ReverseMap();
+
+        CreateMap<CreateStakeholderDto, Stakeholder>();
+        CreateMap<UpdateStakeholderDto, Stakeholder>();
+        CreateMap<Stakeholder, StakeholderDto>().ReverseMap();
+
+        CreateMap<CreateProjectUpdateDto, ProjectUpdate>();
+        CreateMap<UpdateProjectUpdateDto, ProjectUpdate>();
+        CreateMap<ProjectUpdate, ProjectUpdateDto>().ReverseMap();
+
+        CreateMap<CreateMeetingMinuteDto, MeetingMinute>();
+        CreateMap<UpdateMeetingMinuteDto, MeetingMinute>();
+        CreateMap<MeetingMinute, MeetingMinuteDto>().ReverseMap();
     }
 }

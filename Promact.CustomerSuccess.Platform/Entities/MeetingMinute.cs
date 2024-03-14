@@ -10,6 +10,7 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public required DateTime MeetingDate { get; set; }
         public required string MoMLink { get; set; }
         public required string Comments { get; set; }
+        public required string Duration { get; set; }
         public virtual Project? Project { get; set; }
 
         public override object?[] GetKeys()

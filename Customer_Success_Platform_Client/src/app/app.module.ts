@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { from } from 'rxjs'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule, HttpClient} from '@angular/common/http'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SideNavbarComponent } from './side-navbar/side-navbar.component';
 import { ProjectBudgetComponent } from './project-budget/project-budget.component';
 import { PhaseMilestoneComponent } from './phase-milestone/phase-milestone.component';
 import { SprintComponent } from './sprint/sprint.component';
@@ -19,11 +19,21 @@ import { AuditHistoryEditModalComponent } from './audit-history-edit-modal/audit
 import { VersionHistoryEditModalComponent } from './version-history-edit-modal/version-history-edit-modal.component';
 import { ProjectBudgetEditModalComponent } from './project-budget-edit-modal/project-budget-edit-modal.component';
 import { PhaseMilestoneEditModalComponent } from './phase-milestone-edit-modal/phase-milestone-edit-modal.component';
+import { HeaderComponent } from './Home/header/header.component';
+import { SidebarComponent } from './Home/sidebar/sidebar.component';
+import { MainAreaComponent } from './Home/main-area/main-area.component';
+import { CardComponent } from './Home/card/card.component';
+import { AuthModule } from '@auth0/auth0-angular';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { AuthService } from './Service/auth.service';
+import { ProjectModalComponent } from './project-modal/project-modal.component';
+import { ToastrModule } from 'ngx-toastr';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AllProjectsComponent } from './all-projects/all-projects.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SideNavbarComponent,
     ProjectBudgetComponent,
     PhaseMilestoneComponent,
     SprintComponent,
@@ -36,15 +46,32 @@ import { PhaseMilestoneEditModalComponent } from './phase-milestone-edit-modal/p
     AuditHistoryEditModalComponent,
     VersionHistoryEditModalComponent,
     ProjectBudgetEditModalComponent,
-    PhaseMilestoneEditModalComponent
+    PhaseMilestoneEditModalComponent,
+    HeaderComponent,
+    SidebarComponent,
+    MainAreaComponent,
+    CardComponent,
+    WelcomePageComponent,
+    ProjectModalComponent,
+    DashboardComponent,
+    AllProjectsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule, // Add BrowserAnimationsModule
+    ToastrModule.forRoot(), // Add ToastrModule and call forRoot() method
+    AuthModule.forRoot({
+      domain: 'dev-bjnapztl5m3ywebf.us.auth0.com',
+      clientId: 'yCFyr52lV2CZW47BRrR31X2AKhrhSPFd',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    })
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,5 +8,6 @@
         public DateTime EndDate { get; set; }
         public required string Description { get; set; }
         public required string Comments { get; set; }
+        public MilestoneOrPhaseStatus Status { get; set; }
     }
 }

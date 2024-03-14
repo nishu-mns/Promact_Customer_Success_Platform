@@ -2,6 +2,7 @@
 {
     public class UpdateAuditHistory
     {
+        public Guid ProjectId { get; set; }
         public DateTime DateOfAudit { get; set; }
         public required string ReviewedBy { get; set; }
         public required string Status { get; set; }

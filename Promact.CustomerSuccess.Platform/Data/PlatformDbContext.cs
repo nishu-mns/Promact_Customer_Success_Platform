@@ -35,6 +35,9 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     public DbSet<ApplicationUser> Users { get; set; }
     public DbSet<AuditHistory> AuditHistories { get; set; }
     public DbSet<VersionHistory> VersionHistories { get; set; }
+    public DbSet<ApprovedTeam> ApprovedTeams { get; set; }
+    public DbSet<Stakeholder> Stakeholders { get; set; }
+    public DbSet<ProjectUpdate> ProjectUpdates { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -95,6 +98,10 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         {
             Sprint.ConfigureByConvention();
         });
+        builder.Entity<Stakeholder>(Stakeholder =>
+        {
+            Stakeholder.ConfigureByConvention();
+        });
         builder.Entity<PhaseMilestone>(PhaseMilestone =>
         {
             PhaseMilestone.ConfigureByConvention();
@@ -102,6 +109,14 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.Entity<ClientFeedback>(ClientFeedback =>
         {
             ClientFeedback.ConfigureByConvention();
+        });
+        builder.Entity<ApprovedTeam>(ApprovedTeam =>
+        {
+            ApprovedTeam.ConfigureByConvention();
+        });
+        builder.Entity<ProjectUpdate>(ProjectUpdate =>
+        {
+            ProjectUpdate.ConfigureByConvention();
         });
         builder.Entity<Document>(Document =>
         {

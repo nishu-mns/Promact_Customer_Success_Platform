@@ -1,0 +1,23 @@
+<!-- header.component.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Customer Support</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <ng-template #loggedOut class="nav-item">
+        <button class="btn btn-primary" (click)="login()">Log in</button>
+          <a *ngIf="auth.user$ | async as user" class="nav-link" href="#" role="button">
+            {{ user.name }} (Auditor)
+          </a>
+      </ng-template>
+      <ul *ngIf="auth.user$ | async as user" class="nav-item">
+        <li class="nav-link">{{ user.name }}</li>
+        <!-- <li class="nav-link">{{ user.email }}</li> -->
+      </ul>
+      <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+        <button class="btn btn-danger" (click)="logout()">
+          Log out
+        </button>
+      </ng-container>
+    </ul>
+  </div>
+</nav>

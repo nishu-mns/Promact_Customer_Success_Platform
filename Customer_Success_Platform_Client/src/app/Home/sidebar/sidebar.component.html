@@ -1,0 +1,24 @@
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        
+        <button (click)="openModal()" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true">
+          + New Project
+        </button>
+        <a [routerLink]="'/projects'" (click)="setActiveLink('Projects')" 
+        class="list-group-item list-group-item-action py-2 ripple" [class.text-blue-500]="activeLink === 'Projects'">
+          Projects
+        </a>
+        <a [routerLink]="'/projectmanager'" (click)="setActiveLink('ProjectManagers')" class="list-group-item list-group-item-action py-2 ripple" [class.text-blue-500]="activeLink === 'ProjectManagers'">
+          Project Managers
+        </a>
+        <a [routerLink]="'/employees'" (click)="setActiveLink('Employees')" class="list-group-item list-group-item-action py-2 ripple" [class.text-blue-500]="activeLink === 'Employees'">
+          Employees
+        </a>
+        <a [routerLink]="'/settings'" (click)="setActiveLink('Settings')" class="list-group-item list-group-item-action py-2 ripple" [class.text-blue-500]="activeLink === 'Settings'">
+          Settings
+        </a>
+      </div>
+    </div>
+  </nav>
+  <app-project-modal *ngIf="isModalOpen" [step]="step" (closeModal)="closeModal()" (handleContinue)="handleContinue()"></app-project-modal>
