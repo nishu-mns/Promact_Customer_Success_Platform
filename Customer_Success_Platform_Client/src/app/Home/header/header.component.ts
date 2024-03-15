@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.auth.isAuthenticated$.subscribe(isAuthenticated => {
           if (isAuthenticated) {
-            this.router.navigate(['/tables']);
+            this.router.navigate(['/allprojects']);
           }
         });
     

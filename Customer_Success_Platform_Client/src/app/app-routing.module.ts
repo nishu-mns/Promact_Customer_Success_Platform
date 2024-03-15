@@ -12,7 +12,7 @@ import { AllProjectsComponent } from './all-projects/all-projects.component';
 const routes: Routes = [
   {path: '',component: WelcomePageComponent},
   {path: 'tables',component: TablesComponent},
-  // {path: 'allprojects',component: AllProjectsComponent}
+  {path: 'allprojects',component: AllProjectsComponent}
 ];
 
 @NgModule({

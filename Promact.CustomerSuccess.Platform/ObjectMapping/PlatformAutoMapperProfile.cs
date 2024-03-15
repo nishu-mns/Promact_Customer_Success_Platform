@@ -60,5 +60,9 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<CreateMeetingMinuteDto, MeetingMinute>();
         CreateMap<UpdateMeetingMinuteDto, MeetingMinute>();
         CreateMap<MeetingMinute, MeetingMinuteDto>().ReverseMap();
+
+        CreateMap<CreateRiskProfileDto, RiskProfile>();
+        CreateMap<UpdateRiskProfileDto, RiskProfile>();
+        CreateMap<RiskProfile, RiskProfileDto>().ReverseMap();
     }
 }

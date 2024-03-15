@@ -5,7 +5,7 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
     public class UpdateProjectDto
     {
         [Required]
-        [StringLength(128)]
+        //[StringLength(128)]
         public required string Name { get; set; }
         public required string Description { get; set; }
         public required DateTime StartedOn { get; set; }
