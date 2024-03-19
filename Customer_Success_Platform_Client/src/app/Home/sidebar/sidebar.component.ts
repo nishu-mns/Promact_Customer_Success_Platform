@@ -1,34 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ProjectAddModalComponent } from '../../project-add-modal/project-add-modal.component';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
-export class SidebarComponent implements OnInit  {
+export class SidebarComponent {
   
-  constructor(private modalService: NgbModal) { }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  createProject() {
+    this.router.navigate(['/new-project']); 
+  }
+  openProjects(){
+    this.router.navigate(['/all-projects']);
   }
 
-  openProjectModal() {
-    const modalRef = this.modalService.open(ProjectAddModalComponent);
-    modalRef.result.then((result) => {
-      console.log(result);
-    }, (reason) => {
-      console.log(reason);
-    });
-  }
+  
   activeLink = '';
 
-  setActiveLink(link: string): void {
-    this.activeLink = link;
-  }
 
-  // newProject():void{
-    
-  // }
 }

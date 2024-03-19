@@ -1,4 +1,5 @@
 export interface PhaseMilestone {
+    id:string;
     projectId: string;
     title: string;
     startDate: Date;

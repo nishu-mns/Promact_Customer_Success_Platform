@@ -15,6 +15,10 @@ export class AuditHistoryService {
     return this.http.get<{totalCount:number,items:AuditHistory[]}>(this.apiUrl);
   }
 
+  getAuditHistoryById(id: string): Observable<AuditHistory> {
+    return this.http.get<AuditHistory>(`${this.apiUrl}/${id}`);
+  }
+
   createAuditHistory(auditHistory: AuditHistory): Observable<AuditHistory> {
     return this.http.post<AuditHistory>(this.apiUrl, auditHistory);
   }

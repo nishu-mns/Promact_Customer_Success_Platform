@@ -1,0 +1,21 @@
+.form-container {
+    padding: 18px;
+  }
+  
+  .form-control {
+    width: 19rem;
+    margin: 8px;
+  }
+  
+  button {
+    width: 6rem;
+    margin-left: 12px;
+  }
+  
+  @media (max-width: 768px) {
+    .col-md-2,
+    .col-md-10 {
+      width: 100%;
+    }
+  }
+  

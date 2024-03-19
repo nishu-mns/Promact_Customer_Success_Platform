@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+  
+  <div class="container-fluid">
+    <div class="row">
+  
+      <div class="col-md-2">
+        <div class="bg-light p-4">
+          <app-sidebar></app-sidebar>
+        </div>
+      </div>
+  
+      <div class="col-md-10">
+        <div class="container mt-4">
+          <div class="row">
+            <div class="col">
+              <form [formGroup]="firstFormGroup" (ngSubmit)="submitForm()" class="form-container">
+                <div class="mb-3">
+                  <label for="projectName" class="form-label">Project Name</label>
+                  <input type="text" class="form-control" id="projectName" formControlName="Name" placeholder="Project Name">
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
+                  <input type="text" class="form-control" id="description" formControlName="Description" placeholder="Description">
+                </div>
+                <div class="mb-3">
+                  <label for="clientEmail" class="form-label">Client Email Address</label>
+                  <input type="email" class="form-control" id="clientEmail" formControlName="Client" placeholder="enter email address">
+                </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <input type="text" class="form-control" id="status" formControlName="status" placeholder="enter status">
+                  </div>
+                  <div class="mb-3">
+                    <label for="projectManager" class="form-label">Project Manager</label>
+                    <input type="text" class="form-control" id="projectManager" formControlName="projectManager" placeholder="enter project manager">
+                  </div>
+                  <div class="mb-3">
+                    <label for="startedOn" class="form-label">Started On</label>
+                    <input type="date" class="form-control" id="startedOn" formControlName="startedOn">
+                  </div>
+                  <div class="mb-3">
+                    <label for="members" class="form-label">Members</label>
+                    <input type="number" class="form-control" id="members" formControlName="members" placeholder="enter members">
+                  </div>
+                <button class="btn btn-primary" type="submit">Create Project</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  

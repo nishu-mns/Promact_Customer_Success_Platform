@@ -1,14 +1,42 @@
-<div class="container-fluid">
-  <div class="row">
-    <app-header></app-header>
-    <div class="col-2">
-      <app-sidebar></app-sidebar>
-    </div>
-    <div class="col-10 p-4">
-      <router-outlet></router-outlet>
+<div *ngIf="auth.user$ | async as user">
+  <app-navbar></app-navbar>
+
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="col-md-2">
+        <div class="bg-light p-4">
+          <app-sidebar></app-sidebar>
+        </div>
+      </div>
+
+      <div class="col-md-10 mt-2">
+        <div class="project-container">
+          <div class="project-box">
+            <h2>All Projects</h2>
+            <p>{{totalProjects }}</p>
+          </div>
+          <div class="project-box">
+            <h2>In Progress</h2>
+            <p>{{ inProgress }}</p>
+          </div>
+          <div class="project-box">
+            <h2>Completed</h2>
+            <p>{{ completed }}</p>
+          </div>
+          <div class="project-box">
+            <h2>On Hold</h2>
+            <p>{{ onHold }}</p>
+          </div>
+        </div>
+
+        <app-all-projects></app-all-projects>
+      </div>
+
     </div>
   </div>
 </div>
+
 <!-- 
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <a class="navbar-brand" href="#">My Navigation</a>

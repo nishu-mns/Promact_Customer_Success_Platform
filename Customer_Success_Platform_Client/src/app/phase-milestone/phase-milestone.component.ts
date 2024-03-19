@@ -14,13 +14,15 @@ export class PhaseMilestoneComponent implements OnInit {
   phaseMilestones: PhaseMilestone[] = [];
   isNewRow: boolean = false;
   newPhaseMilestone: PhaseMilestone = {
-    Id: '',
-    ProjectId: '',
-    Title: '',
-    StartDate: new Date(),
-    EndDate: new Date(),
-    Description: '',
-    Comments: ''
+    id: "",
+    projectId: "",
+    title: "",
+    startDate: new Date(),
+    endDate: new Date(),
+    approvalDate: new Date(),
+    status: 0,
+    revisedCompletionDate: new Date(),
+    comments: ""
   };
 
   constructor(private phaseMilestoneService: PhaseMilestoneService,
@@ -38,13 +40,13 @@ export class PhaseMilestoneComponent implements OnInit {
   }
 
   saveChanges(): void {
-   
+
   }
 
   deletePhaseMilestone(phaseMilestone: PhaseMilestone) {
     if (confirm('Are you sure you want to delete this phase milestone?')) {
-      this.phaseMilestoneService.deletePhaseMilestone(phaseMilestone.Id).subscribe(() => {
-        this.phaseMilestones = this.phaseMilestones.filter(pm => pm.Id !== phaseMilestone.Id);
+      this.phaseMilestoneService.deletePhaseMilestone(phaseMilestone.id).subscribe(() => {
+        this.phaseMilestones = this.phaseMilestones.filter(pm => pm.id !== phaseMilestone.id);
       });
     }
   }
@@ -59,13 +61,15 @@ export class PhaseMilestoneComponent implements OnInit {
         this.phaseMilestones.push(createdMilestone);
         this.isNewRow = false;
         this.newPhaseMilestone = {
-          Id: '',
-          ProjectId: '',
-          Title: '',
-          StartDate: new Date(),
-          EndDate: new Date(),
-          Description: '',
-          Comments: ''
+          id: "",
+          projectId: "",
+          title: "",
+          startDate: new Date(),
+          endDate: new Date(),
+          approvalDate: new Date(),
+          status: 0,
+          revisedCompletionDate: new Date(),
+          comments: ""
         };
       },
       error => {
@@ -78,7 +82,7 @@ export class PhaseMilestoneComponent implements OnInit {
     const modalRef = this.modalService.open(PhaseMilestoneEditModalComponent, { centered: true });
     modalRef.componentInstance.phaseMilestone = { ...phaseMilestone };
     modalRef.componentInstance.saveChangesEvent.subscribe((updatedMilestone: PhaseMilestone) => {
-      const index = this.phaseMilestones.findIndex(h => h.Id === updatedMilestone.Id);
+      const index = this.phaseMilestones.findIndex(h => h.id === updatedMilestone.id);
       if (index !== -1) {
         this.phaseMilestones[index] = updatedMilestone;
       }

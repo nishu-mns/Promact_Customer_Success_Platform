@@ -10,11 +10,5 @@ import { Router } from '@angular/router';
 })
 export class WelcomePageComponent {
 
-  // ngOnInit(): void {
-  //   this.authService.isAuthenticated$.subscribe(isAuthenticated => {
-  //     if (isAuthenticated) {
-  //       this.router.navigate(['/dashboard']);
-  //     }
-  //   });
-  // }
+  constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
 }

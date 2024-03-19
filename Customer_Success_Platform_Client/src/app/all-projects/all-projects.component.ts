@@ -9,19 +9,52 @@ import { ProjectService } from '../Service/project.service';
 })
 export class AllProjectsComponent implements OnInit {
   projects: Project[] = [];
-  constructor(private projectService: ProjectService) {}
+  projectIds: string[] = [];
+  constructor(private projectService: ProjectService) { }
 
   ngOnInit() {
     this.getallProjects();
   }
 
-  getallProjects(){
-    this.projectService.getAllProjects().subscribe(data => {
-      this.projects = data.items;
-      console.log(data.items);
-      console.log(this.projects);
-      
-    });
-    
+  getallProjects(): void {
+    this.projectService.getAllProjects().subscribe(
+      (data: any) => {
+        console.log('Projects:', data);
+        this.projects = data.items.map((project: any) => ({
+          id: project.id,
+          name: project.name,
+          description: project.description,
+          startedOn: project.startedOn,
+          status: project.status,
+          projectManager: project.projectManager,
+          members: project.members
+        }));
+        this.projectIds = data.items.map((project: any) => project.id);
+      },
+      (error) => {
+        console.error('Error loading projects:', error);
+      }
+    );
+  }
+
+  editProject(id: string): void {
+    this.projectService.getProjectById(id).subscribe(
+      (project: Project) => { },
+      (error) => {
+        console.error('Error fetching project details:', error);
+      }
+    );
+  }
+
+  deleteProject(id: string): void {
+    this.projectService.deleteProject(id).subscribe(
+      () => {
+        console.log('Project deleted successfully');
+        this.getallProjects();
+      },
+      (error) => {
+        console.error('Error deleting project:', error); 
+      }
+    );
   }
 }

@@ -6,30 +6,36 @@
           <th>Title</th>
           <th>Start Date</th>
           <th>End Date</th>
-          <th>Description</th>
+          <th>Approval Date</th>
           <th>Comment</th>
+          <th>Status</th>
+          <th>Revised Completion Date</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let milestone of phaseMilestones">
-          <td>{{ milestone.Title }}</td>
-          <td>{{ milestone.StartDate | date }}</td>
-          <td>{{ milestone.EndDate | date }}</td>
-          <td>{{ milestone.Description }}</td>
-          <td>{{ milestone.Comments }}</td>
+          <td>{{ milestone.title }}</td>
+          <td>{{ milestone.startDate | date }}</td>
+          <td>{{ milestone.endDate | date }}</td>
+          <td>{{ milestone.approvalDate }}</td>
+          <td>{{ milestone.comments }}</td>
+          <td>{{ milestone.status }}</td>
+          <td>{{ milestone.revisedCompletionDate }}</td>
           <td>
             <button class="btn btn-primary me-2" (click)="openEditModal(milestone)">Edit</button>
             <button class="btn btn-danger" (click)="deletePhaseMilestone(milestone)">Delete</button>
           </td>
         </tr>
         <tr *ngIf="isNewRow">
-          <td><input type="text" [(ngModel)]="newPhaseMilestone.Title"></td>
-          <td><input type="date" [(ngModel)]="newPhaseMilestone.StartDate"></td>
-          <td><input type="date" [(ngModel)]="newPhaseMilestone.EndDate"></td>
-          <td><input type="text" [(ngModel)]="newPhaseMilestone.Description"></td>
-          <td><input type="text" [(ngModel)]="newPhaseMilestone.Comments"></td>
-          <td><input type="text" [(ngModel)]="newPhaseMilestone.ProjectId" placeholder="Enter Project Id here"></td>
+          <td><input type="text" [(ngModel)]="newPhaseMilestone.title"></td>
+          <td><input type="date" [(ngModel)]="newPhaseMilestone.startDate"></td>
+          <td><input type="date" [(ngModel)]="newPhaseMilestone.endDate"></td>
+          <td><input type="text" [(ngModel)]="newPhaseMilestone.approvalDate"></td>
+          <td><input type="text" [(ngModel)]="newPhaseMilestone.comments"></td>
+          <td><input type="text" [(ngModel)]="newPhaseMilestone.status"></td>
+          <td><input type="text" [(ngModel)]="newPhaseMilestone.revisedCompletionDate"></td>
+          <td><input type="text" [(ngModel)]="newPhaseMilestone.projectId" placeholder="Enter Project Id here"></td>
           <td><button class="btn btn-success" (click)="saveNewRow()">Add row</button></td>
         </tr>
       </tbody>

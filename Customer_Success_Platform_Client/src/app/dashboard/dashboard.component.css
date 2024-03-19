@@ -1,3 +1,48 @@
-.nav-link.active {
-    border-bottom: 2px solid blue;
+.project-container {
+  display: flex;
+}
+
+.project-box {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  background-color: rgba(6, 72, 255, 0.562);
+  border-radius: 5px;
+  border:2px solid black;
+  text-align: center;
+}
+
+.project-box h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.project-box p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#search-btn {
+  color: white;
+  border-radius: 2px;
+}
+
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 300px;
+  border-radius: 5px;
+}
+
+.btn {
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .col-md-2, .col-md-10 {
+    width: 100%;
   }
+}

@@ -9,15 +9,7 @@ import { AuditHistory } from '../Models/AuditHistory';
   styleUrls: ['./audit-history-edit-modal.component.css']
 })
 export class AuditHistoryEditModalComponent {
-  @Input() auditHistory: AuditHistory={
-    id: '',
-    dateOfAudit:new Date,
-    reviewedBy: '',
-    status: '',
-    reviewedSection: '',
-    commentQueries: '',
-    actionItem: ''
-  };
+  @Input() auditHistory: any;
 
   @Output() saveChangesEvent = new EventEmitter<AuditHistory>();
 

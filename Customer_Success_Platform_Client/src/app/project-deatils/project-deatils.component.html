@@ -1,0 +1,182 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <h2 class="navbar-brand">Customer Success</h2>
+        <form class="form-inline">
+            <div class="input-group">
+                <input class="form-control" id="search-bar" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <app-sidebar></app-sidebar>
+        </div>
+
+        <div class="col-md-10">
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-primary mb-4" id="export-btn" (click)="downloadAsPdf()">Export project
+                            details as pdf</button>
+                        <!-- Bootstrap Nav Tabs for Project Details -->
+                        <ul class="nav nav-tabs" id="projectTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Project Budjet</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Audit History</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Version History</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Scope</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Project Stack (Tech) </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Escalation Matrix </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Stakeholders</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Risk Profiling</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Phases/Milestones </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Sprint wise detail </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Detailed timeline reference </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Approved Team </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Project Resources </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Client Feedback </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">Project updates </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="projectDesc-tab" data-bs-toggle="tab"
+                                    data-bs-target="#projectDesc" type="button" role="tab" aria-controls="projectDesc"
+                                    aria-selected="true">MoMs of client meetings </button>
+                            </li>
+                           
+                        </ul>
+                        <!-- Bootstrap Tab Content -->
+                        <div class="tab-content" id="projectTabsContent">
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-project-budget></app-project-budget>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-version-history></app-version-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                            <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
+                                aria-labelledby="projectDesc-tab">
+                                <app-audit-history></app-audit-history>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

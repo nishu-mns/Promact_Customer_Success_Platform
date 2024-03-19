@@ -24,7 +24,7 @@ export class PhaseMilestoneService {
   }
 
   updatePhaseMilestone(phaseMilestone: PhaseMilestone): Observable<PhaseMilestone> {
-    return this.http.put<PhaseMilestone>(`${this.apiUrl}/${phaseMilestone.Id}`, phaseMilestone);
+    return this.http.put<PhaseMilestone>(`${this.apiUrl}/${phaseMilestone.id}`, phaseMilestone);
   }
 
   deletePhaseMilestone(id: string): Observable<void> {

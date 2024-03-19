@@ -8,23 +8,31 @@
     <form>
       <div class="form-group mb-3">
         <label>Title</label>
-        <input type="text" class="form-control" [(ngModel)]="phaseMilestone.Title" name="Title">
+        <input type="text" class="form-control" [(ngModel)]="phaseMilestone.title" name="title">
       </div>
       <div class="form-group mb-3">
         <label>Start Date</label>
-        <input type="date" class="form-control" [(ngModel)]="phaseMilestone.StartDate" name="StartDate">
+        <input type="date" class="form-control" [(ngModel)]="phaseMilestone.startDate" name="startDate">
       </div>
       <div class="form-group mb-3">
         <label>End Date</label>
-        <input type="date" class="form-control" [(ngModel)]="phaseMilestone.EndDate" name="EndDate">
+        <input type="date" class="form-control" [(ngModel)]="phaseMilestone.endDate" name="endDate">
       </div>
       <div class="form-group mb-3">
         <label>Description</label>
-        <textarea class="form-control" [(ngModel)]="phaseMilestone.Description" name="Description"></textarea>
+        <textarea class="form-control" [(ngModel)]="phaseMilestone.approvalDate" name="approvalDate"></textarea>
+      </div>
+      <div class="form-group mb-3">
+        <label>Description</label>
+        <textarea class="form-control" [(ngModel)]="phaseMilestone.status" name="status"></textarea>
+      </div>
+      <div class="form-group mb-3">
+        <label>Description</label>
+        <textarea class="form-control" [(ngModel)]="phaseMilestone.revisedCompletionDate" name="revisedCompletionDate"></textarea>
       </div>
       <div class="form-group mb-3">
         <label>Comments</label>
-        <input type="text" class="form-control" [(ngModel)]="phaseMilestone.Comments" name="Comments">
+        <input type="text" class="form-control" [(ngModel)]="phaseMilestone.comments" name="Comments">
       </div>
     </form>
   </div>

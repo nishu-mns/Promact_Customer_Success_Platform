@@ -10,13 +10,15 @@ import { PhaseMilestoneService } from '../Service/phaseMilestone.service';
 })
 export class PhaseMilestoneEditModalComponent {
   @Input() phaseMilestone: PhaseMilestone = {
-    Id: '',
-    ProjectId: '',
-    Title: '',
-    StartDate: new Date(),
-    EndDate: new Date(),
-    Description: '',
-    Comments: ''
+    id: "",
+    projectId: "",
+    title: "",
+    startDate: new Date(),
+    endDate: new Date(),
+    approvalDate: new Date(),
+    status: 0,
+    revisedCompletionDate: new Date(),
+    comments: ""
   };
 
   @Output() saveChangesEvent = new EventEmitter<PhaseMilestone>();
