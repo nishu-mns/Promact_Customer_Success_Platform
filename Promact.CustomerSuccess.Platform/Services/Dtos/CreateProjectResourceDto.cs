@@ -3,6 +3,8 @@
     public class CreateProjectResourceDto
     {
         public Guid ProjectId { get; set; }
+        public string ResourceName { get; set; }
+        public string Comment { get; set; }
         public double AllocationPercentage { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }

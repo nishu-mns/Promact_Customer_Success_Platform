@@ -64,5 +64,13 @@ public class PlatformAutoMapperProfile : Profile
         CreateMap<CreateRiskProfileDto, RiskProfile>();
         CreateMap<UpdateRiskProfileDto, RiskProfile>();
         CreateMap<RiskProfile, RiskProfileDto>().ReverseMap();
+
+        CreateMap<CreateDetailedTimelineDto, DetailedTimeline>();
+        CreateMap<UpdateDetailedTimelineDto, DetailedTimeline>();
+        CreateMap<DetailedTimeline, DetailedTimelineDto>().ReverseMap();
+
+        CreateMap<CreateScopeDto, Scope>();
+        CreateMap<UpdateScopeDto, Scope>();
+        CreateMap<Scope, ScopeDto>().ReverseMap();
     }
 }

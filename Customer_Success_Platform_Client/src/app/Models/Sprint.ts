@@ -1,13 +1,12 @@
 export interface Sprint {
-    PhaseMilestoneId: string;
-    StartDate: Date;
-    EndDate: Date;
-    Status: SprintStatus;
-    Comments: string;
-    Goals: string;
-    SprintNumber: number;
-    Id: string;
-  }
+  projectId: string;
+  sprintNumber: number;
+  startDate: Date;
+  endDate: Date;
+  status: number;
+  comments: string;
+  goals: string;
+}
 
   export enum SprintStatus {
     InProgress = 1,

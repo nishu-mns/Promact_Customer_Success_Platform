@@ -38,6 +38,8 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     public DbSet<ApprovedTeam> ApprovedTeams { get; set; }
     public DbSet<Stakeholder> Stakeholders { get; set; }
     public DbSet<ProjectUpdate> ProjectUpdates { get; set; }
+    public DbSet<DetailedTimeline> DetailedTimelines { get; set; }
+    public DbSet<Scope> Scopes { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)

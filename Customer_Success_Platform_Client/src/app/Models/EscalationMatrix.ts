@@ -1,6 +1,6 @@
 export interface EscalationMatrix {
-    level: EscalationMatrixLevels;
-    escalationType: EscalationType;
+    level: string;
+    escalationType: string;
     projectId: string;
     id: string;
   }

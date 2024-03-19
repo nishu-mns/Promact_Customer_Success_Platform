@@ -30,6 +30,8 @@ import { ProjectModalComponent } from './project-modal/project-modal.component';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AllProjectsComponent } from './all-projects/all-projects.component';
+import { ProjectAddModalComponent } from './project-add-modal/project-add-modal.component';
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -54,13 +56,15 @@ import { AllProjectsComponent } from './all-projects/all-projects.component';
     WelcomePageComponent,
     ProjectModalComponent,
     DashboardComponent,
-    AllProjectsComponent
+    AllProjectsComponent,
+    ProjectAddModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgbModule,
     BrowserAnimationsModule, // Add BrowserAnimationsModule
     ToastrModule.forRoot(), // Add ToastrModule and call forRoot() method
     AuthModule.forRoot({

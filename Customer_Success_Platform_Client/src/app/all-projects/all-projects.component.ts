@@ -12,8 +12,16 @@ export class AllProjectsComponent implements OnInit {
   constructor(private projectService: ProjectService) {}
 
   ngOnInit() {
+    this.getallProjects();
+  }
+
+  getallProjects(){
     this.projectService.getAllProjects().subscribe(data => {
-      this.projects = data;
+      this.projects = data.items;
+      console.log(data.items);
+      console.log(this.projects);
+      
     });
+    
   }
 }

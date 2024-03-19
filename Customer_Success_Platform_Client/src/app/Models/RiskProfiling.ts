@@ -1,10 +1,13 @@
 export interface RiskProfiling {
-    ProjectId: string;
-    RiskType: RiskType;
-    Severity: RiskSeverity;
-    Impact: RiskImpact;
-    Id: string;
-  }
+  projectId: string;
+  riskType: number;
+  severity: number;
+  impact: number;
+  description: string;
+  remedialSteps: string;
+  status: string;
+  dateReceived: Date;
+}
   
   export enum RiskType {
     Financial,
