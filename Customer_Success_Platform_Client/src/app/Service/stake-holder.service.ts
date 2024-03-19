@@ -10,6 +10,7 @@ export class StakeHolderService {
 
   constructor(private http: HttpClient) { }
   private apiUrl = 'https://localhost:44347/api/app/stakholder';
+  
   getAllStakeholders(): Observable<Stakeholder[]> {
     return this.http.get<Stakeholder[]>(`${this.apiUrl}`);
   }

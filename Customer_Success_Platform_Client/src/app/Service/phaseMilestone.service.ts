@@ -11,7 +11,6 @@ export class PhaseMilestoneService {
   constructor(private http: HttpClient) { }
 
   getPhaseMilestones(): Observable<{ totalCount: number, items: PhaseMilestone[] }> {
-    // console.log("getting........");
     return this.http.get<{ totalCount: number, items: PhaseMilestone[] }>(this.apiUrl);
   }
 

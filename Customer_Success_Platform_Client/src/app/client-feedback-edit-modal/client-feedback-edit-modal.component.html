@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h4 class="modal-title">Edit Client Feedback</h4>
+    <button type="button" class="btn btn-danger close ms-4" aria-label="Close"
+        (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form>
+        <div class="form-group mb-3">
+            <label>Feedback Type</label>
+            <input type="text" class="form-control" [(ngModel)]="clientFeedback.feedbackType" name="feedbackType">
+        </div>
+        <div class="form-group mb-3">
+            <label>Date Received</label>
+            <input type="date" class="form-control" [(ngModel)]="clientFeedback.dateReceived" name="dateReceived">
+        </div>
+        <div class="form-group mb-3">
+            <label>Detailed Feedback</label>
+            <input type="text" class="form-control" [(ngModel)]="clientFeedback.detailedFeedback"
+                name="detailedFeedback">
+        </div>
+        <div class="form-group mb-3">
+            <label>Action Taken</label>
+            <input type="text" class="form-control" [(ngModel)]="clientFeedback.actionTaken" name="actionTaken">
+        </div>
+        <div class="form-group mb-3">
+            <label>Closure Date</label>
+            <input type="date" class="form-control" [(ngModel)]="clientFeedback.closureDate" name="closureDate">
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Cancel')">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="saveChanges()">Save Changes</button>
+</div>

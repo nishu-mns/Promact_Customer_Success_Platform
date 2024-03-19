@@ -1,1 +1,41 @@
-<p>client-feedback works!</p>
+<div class="container py-5">
+    <h3 class="text-center text-uppercase">List of Client Feedbacks</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="text-center text-uppercase">
+          <!-- <th>ID</th> -->
+          <th>Date Received</th>
+          <th>Feedback Type</th>
+          <th>Detailed Feedback</th>
+          <th>Action Taken</th>
+          <th>Closure Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let feedback of clientFeedbacks">
+          <!-- <td>{{ feedback.id }}</td> -->
+          <td>{{ feedback.dateReceived | date }}</td>
+          <td>{{ feedback.feedbackType }}</td>
+          <td>{{ feedback.detailedFeedback }}</td>
+          <td>{{ feedback.actionTaken }}</td>
+          <td>{{ feedback.closureDate | date }}</td>
+          <td>
+            <button class="btn btn-primary me-2" (click)="openEditModal(feedback)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteClientFeedback(feedback)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="isNewFeedback">
+          <!-- <td><input type="text" [(ngModel)]="newFeedback.id"></td> -->
+          <td><input type="date" [(ngModel)]="newFeedback.dateReceived"></td>
+          <td><input type="text" [(ngModel)]="newFeedback.feedbackType"></td>
+          <td><input type="text" [(ngModel)]="newFeedback.detailedFeedback"></td>
+          <td><input type="text" [(ngModel)]="newFeedback.actionTaken"></td>
+          <td><input type="date" [(ngModel)]="newFeedback.closureDate"></td>
+          <td><button class="btn btn-success" (click)="saveNewFeedback()">Add row</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary me-2" (click)="addNewFeedback()">+</button>
+    <button class="btn btn-success" (click)="saveChanges()">Save Changes</button>
+</div>

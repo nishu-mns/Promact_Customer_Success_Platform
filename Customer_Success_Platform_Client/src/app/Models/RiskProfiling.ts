@@ -1,4 +1,5 @@
 export interface RiskProfiling {
+  id:string;
   projectId: string;
   riskType: number;
   severity: number;

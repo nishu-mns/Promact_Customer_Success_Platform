@@ -1,4 +1,5 @@
 export interface ClientFeedback {
+    id:string;  
     projectId: string;
     feedbackType: string;
     dateReceived: Date;

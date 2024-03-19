@@ -1,1 +1,40 @@
-<p>approved-team works!</p>
+<div class="container py-5">
+    <h3 class="text-center text-uppercase">List of Approved Teams</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="text-center text-uppercase">
+          <!-- <th>ID</th> -->
+          <th>Phase</th>
+          <th>Number of Resources</th>
+          <th>Role</th>
+          <th>Availability Percentage</th>
+          <th>Duration</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let team of approvedTeams">
+          <!-- <td>{{ team.id }}</td> -->
+          <td>{{ team.phase }}</td>
+          <td>{{ team.numberOfResources }}</td>
+          <td>{{ team.role }}</td>
+          <td>{{ team.availabilityPercentage }}</td>
+          <td>{{ team.duration }}</td>
+          <td>
+            <button class="btn btn-primary me-2" (click)="openEditModal(team)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteApprovedTeam(team)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="isNewRow">
+          <td><input type="number" [(ngModel)]="newApprovedTeam.phase"></td>
+          <td><input type="number" [(ngModel)]="newApprovedTeam.numberOfResources"></td>
+          <td><input type="text" [(ngModel)]="newApprovedTeam.role"></td>
+          <td><input type="number" [(ngModel)]="newApprovedTeam.availabilityPercentage"></td>
+          <td><input type="number" [(ngModel)]="newApprovedTeam.duration"></td>
+          <td><button class="btn btn-success" (click)="saveNewRow()">Add row</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary me-2" (click)="addNewRow()">+</button>
+    <button class="btn btn-success" (click)="saveChanges()">Save Changes</button>
+</div>

@@ -1,5 +1,6 @@
 export interface ProjectResource {
-    projectId: string;
+  id:string;  
+  projectId: string;
     resourceName: string;
     allocationPercentage: number;
     start: Date;

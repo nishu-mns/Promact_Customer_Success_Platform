@@ -1,5 +1,6 @@
 export interface MeetingMinute {
-    projectId: string;
+  id:string;  
+  projectId: string;
     meetingDate: Date;
     duration: number;
     MoMLink: string;

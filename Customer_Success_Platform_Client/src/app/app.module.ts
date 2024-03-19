@@ -37,6 +37,9 @@ import { DetailedTimelineComponent } from './detailed-timeline/detailed-timeline
 import { ProjectResourcesComponent } from './project-resources/project-resources.component';
 import { ProjectUpdateComponent } from './project-update/project-update.component';
 import { ScopeComponent } from './scope/scope.component';
+import { ApprovedTeamEditModalComponent } from './approved-team-edit-modal/approved-team-edit-modal.component';
+import { ClientFeedbackEditModalComponent } from './client-feedback-edit-modal/client-feedback-edit-modal.component';
+import { DetailedTimelineEditModalComponent } from './detailed-timeline-edit-modal/detailed-timeline-edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +71,9 @@ import { ScopeComponent } from './scope/scope.component';
     ProjectResourcesComponent,
     ProjectUpdateComponent,
     ScopeComponent,
+    ApprovedTeamEditModalComponent,
+    ClientFeedbackEditModalComponent,
+    DetailedTimelineEditModalComponent,
   ],
   imports: [
     BrowserModule,

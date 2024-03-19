@@ -12,7 +12,6 @@ import { Stakeholder } from '../Models/StakeHolder';
 import { StakeHolderService } from '../Service/stake-holder.service';
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-audit-history',
   templateUrl: './audit-history.component.html',
@@ -71,17 +70,17 @@ export class AuditHistoryComponent implements OnInit {
 
 
 
-  loadAuditHistory(): void {
-    this.auditHistoryService.getAuditHistories().subscribe(
-      (data: any) => {
-        this.auditHistories = data.items.filter((entry: AuditHistory) => entry.projectId === this.projectId);
+  // loadAuditHistory(): void {
+  //   this.auditHistoryService.getAuditHistories().subscribe(
+  //     (data: any) => {
+  //       this.auditHistories = data.items.filter((entry: AuditHistory) => entry.projectId === this.projectId);
         
-      },
-      error => {
-        console.error('Error loading audit history:', error);
-      }
-    );
-  }
+  //     },
+  //     error => {
+  //       console.error('Error loading audit history:', error);
+  //     }
+  //   );
+  // }
 
   getAuditHistories(): void {
     this.auditHistoryService.getAuditHistories()

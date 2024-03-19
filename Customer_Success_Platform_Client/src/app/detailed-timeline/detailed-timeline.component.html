@@ -1,1 +1,29 @@
-<p>detailed-timeline works!</p>
+<div class="container py-5">
+    <h3 class="text-center text-uppercase">List of Detailed Timelines</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="text-center text-uppercase">
+          <!-- <th>ID</th> -->
+          <th>Link</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let timeline of detailedTimelines">
+          <!-- <td>{{ timeline.id }}</td> -->
+          <td>{{ timeline.link }}</td>
+          <td>
+            <button class="btn btn-primary me-2" (click)="openEditModal(timeline)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteTimeline(timeline)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="isNewTimeline">
+          <!-- <td><input type="text" [(ngModel)]="newTimeline.id"></td> -->
+          <td><input type="text" [(ngModel)]="newTimeline.link"></td>
+          <td><button class="btn btn-success" (click)="saveNewTimeline()">Add row</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary me-2" (click)="addNewTimeline()">+</button>
+    <button class="btn btn-success" (click)="saveChanges()">Save Changes</button>
+</div>
