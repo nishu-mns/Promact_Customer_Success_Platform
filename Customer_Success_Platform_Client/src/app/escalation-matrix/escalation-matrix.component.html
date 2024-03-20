@@ -1,1 +1,30 @@
-<p>escalation-matrix works!</p>
+<div class="container py-5">
+    <h3 class="text-center text-uppercase">List of Escalation Matrices</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="text-center text-uppercase">
+                <!-- <th>ID</th> -->
+                <th>Level</th>
+                <th>Escalation Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let matrix of escalationMatrices">
+                <!-- <td>{{ matrix.id }}</td> -->
+                <td>{{ matrix.level }}</td>
+                <td>{{ matrix.escalationType }}</td>
+                <td>
+                    <button class="btn btn-primary me-2" (click)="openEditModal(matrix)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteEscalationMatrix(matrix)">Delete</button>
+                </td>
+            </tr>
+            <tr *ngIf="isNewMatrix">
+                <td><input type="text" [(ngModel)]="newMatrix.level"></td>
+                <td><input type="text" [(ngModel)]="newMatrix.escalationType"></td>
+                <td><button class="btn btn-success" (click)="saveNewMatrix()">Add row</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary me-2" (click)="addNewMatrix()">+</button>
+</div>

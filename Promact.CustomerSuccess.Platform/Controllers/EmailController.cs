@@ -39,6 +39,7 @@ namespace Promact.CustomerSuccess.Platform.Controllers
 
                 if (!IsValidEmailAddress(recipient))
                 {
+                    Console.WriteLine("Not valid address..:(");
                     // Skip sending email if recipient email address is invalid
                     continue;
                 }

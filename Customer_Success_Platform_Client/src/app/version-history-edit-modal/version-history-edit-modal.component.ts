@@ -9,17 +9,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './version-history-edit-modal.component.css'
 })
 export class VersionHistoryEditModalComponent {
-  @Input() versionHistory: VersionHistory={
-    id: '',
-    version: '',
-    type: '',
-    change: '',
-    changeReason: '',
-    createdBy: '',
-    revisionDate: new Date(),
-    approvalDate: new Date(),
-    approvedBy: ''
-  };
+  @Input() versionHistory: any;
 
   @Output() saveChangesEvent = new EventEmitter<VersionHistory>();
 

@@ -14,8 +14,8 @@ export class ProjectBudgetService {
     return this.http.get<{totalCount:number,items:ProjectBudget[]}>(this.apiUrl);
   }
 
-  getProjectBudgetById(id: number): Observable<{totalCount:number,items:ProjectBudget[]}> {
-    return this.http.get<{totalCount:number,items:ProjectBudget[]}>(`${this.apiUrl}/${id}`);
+  getProjectBudgetById(id: string): Observable<ProjectBudget> {
+    return this.http.get<ProjectBudget>(`${this.apiUrl}/${id}`);
   }
 
   createProjectBudget(projectBudget: ProjectBudget): Observable<ProjectBudget> {

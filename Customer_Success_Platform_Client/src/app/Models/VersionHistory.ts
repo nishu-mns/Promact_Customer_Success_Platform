@@ -1,5 +1,6 @@
 export interface VersionHistory {
     id: string;
+    projectId:string;
     version: string;
     type: string;
     change: string;

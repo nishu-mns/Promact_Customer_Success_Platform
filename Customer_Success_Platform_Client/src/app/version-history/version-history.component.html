@@ -1,51 +1,50 @@
 <div class="container py-5">
-    <h3 class="text-center text-uppercase">List of Version Histories</h3>
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr class="text-center text-uppercase">
-          <!-- <th>ID</th> -->
-          <th>Version</th>
-          <th>Type</th>
-          <th>Change</th>
-          <th>Change Reason</th>
-          <th>Created By</th>
-          <th>Revision Date</th>
-          <th>Approval Date</th>
-          <th>Approved By</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let history of versionHistories">
-          <!-- <td>{{ history.id }}</td> -->
-          <td>{{ history.version }}</td>
-          <td>{{ history.type }}</td>
-          <td>{{ history.change }}</td>
-          <td>{{ history.changeReason }}</td>
-          <td>{{ history.createdBy }}</td>
-          <td>{{ history.revisionDate | date }}</td>
-          <td>{{ history.approvalDate ? (history.approvalDate | date) : '-' }}</td>
-          <td>{{ history.approvedBy }}</td>
-          <td>
-            <button class="btn btn-primary me-2" (click)="openEditModal(history)">Edit</button>
-            <button class="btn btn-danger" (click)="deleteVersionHistory(history)">Delete</button>
-          </td>
-        </tr>
-        <tr *ngIf="isNewRow">
-          <!-- <td><input type="text" [(ngModel)]="newVersionHistory.id"></td> -->
-          <td><input type="text" [(ngModel)]="newVersionHistory.version"></td>
-          <td><input type="text" [(ngModel)]="newVersionHistory.type"></td>
-          <td><input type="text" [(ngModel)]="newVersionHistory.change"></td>
-          <td><input type="text" [(ngModel)]="newVersionHistory.changeReason"></td>
-          <td><input type="text" [(ngModel)]="newVersionHistory.createdBy"></td>
-          <td><input type="date" [(ngModel)]="newVersionHistory.revisionDate"></td>
-          <td><input type="date" [(ngModel)]="newVersionHistory.approvalDate"></td>
-          <td><input type="text" [(ngModel)]="newVersionHistory.approvedBy"></td>
-          <td><button class="btn btn-success" (click)="saveNewRow()">Add row</button></td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="btn btn-primary me-2" (click)="addNewRow()">+</button>
-    <button class="btn btn-success" (click)="saveChanges()">Save Changes</button>
-  </div>
-  
+  <h3 class="text-center text-uppercase">List of Version History</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr class="text-center text-uppercase">
+        <!-- <th>ID</th> -->
+        <th>Version</th>
+        <th>Type</th>
+        <th>Change</th>
+        <th>Change Reason</th>
+        <th>Created By</th>
+        <th>Revision Date</th>
+        <th>Approval Date</th>
+        <th>Approved By</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let history of versionHistories">
+        <!-- <td>{{ history.id }}</td> -->
+        <td>{{ history.version }}</td>
+        <td>{{ history.type }}</td>
+        <td>{{ history.change }}</td>
+        <td>{{ history.changeReason }}</td>
+        <td>{{ history.createdBy }}</td>
+        <td>{{ history.revisionDate | date }}</td>
+        <td>{{ history.approvalDate ? (history.approvalDate | date) : 'Not Approved' }}</td>
+        <td>{{ history.approvedBy }}</td>
+        <td>
+          <button class="btn btn-primary me-2" (click)="openEditModal(history)">Edit</button>
+          <button class="btn btn-danger" (click)="deleteVersionHistory(history)">Delete</button>
+        </td>
+      </tr>
+      <tr *ngIf="isNewVersionHistory">
+        <!-- <td><input type="text" [(ngModel)]="newVersionHistory.id"></td> -->
+        <td><input type="text" [(ngModel)]="newVersionHistory.version"></td>
+        <td><input type="text" [(ngModel)]="newVersionHistory.type"></td>
+        <td><input type="text" [(ngModel)]="newVersionHistory.change"></td>
+        <td><input type="text" [(ngModel)]="newVersionHistory.changeReason"></td>
+        <td><input type="text" [(ngModel)]="newVersionHistory.createdBy"></td>
+        <td><input type="date" [(ngModel)]="newVersionHistory.revisionDate"></td>
+        <td><input type="date" [(ngModel)]="newVersionHistory.approvalDate"></td>
+        <td><input type="text" [(ngModel)]="newVersionHistory.approvedBy"></td>
+        <td><button class="btn btn-success" (click)="saveNewVersionHistory()">Add row</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary me-2" (click)="addNewVersionHistory()">+</button>
+  <!-- <button class="btn btn-success" (click)="saveChanges()">Save Changes</button> -->
+</div>

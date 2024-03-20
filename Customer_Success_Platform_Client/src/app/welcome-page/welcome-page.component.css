@@ -1,0 +1,6 @@
+.btn-danger{
+    position: fixed;
+    top: 2%;
+    left: 20%;
+    z-index: 10000;
+}

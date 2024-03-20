@@ -1,7 +1,7 @@
 <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-  <!-- <button class="login-btn in" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+  <button class="btn btn-danger" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
     Log out
-  </button> -->
+  </button>
   <app-dashboard></app-dashboard>
 </ng-container>
 
@@ -17,7 +17,7 @@
     </p>
     <div class="text-lg text-center mb-4">
       <h2>Please log in to access the platform's features.</h2>
-      <button class="login-btn" (click)="auth.loginWithRedirect()">Log in</button>
+      <button class="btn btn-primary" (click)="auth.loginWithRedirect()">Log in</button>
     </div>
   </div>
 </ng-template>

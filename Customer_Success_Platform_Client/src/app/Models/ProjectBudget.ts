@@ -3,8 +3,8 @@ export interface ProjectBudget{
     type:Number,
     durationInMonths:Number,
     budgetedHours:Number,
-    ContractDuration:Number,
-    BudgetedCost:Number,
-    Currency:string,
-    ProjectId:string
+    contractDuration:Number,
+    budgetedCost:Number,
+    currency:string,
+    projectId:string
 }

@@ -1,1 +1,32 @@
-<p>scope works!</p>
+<div class="container py-5">
+    <h3 class="text-center text-uppercase">List of Scopes</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="text-center text-uppercase">
+                <!-- <th>ID</th> -->
+                <th>Technology</th>
+                <th>Scope Details</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let scope of scopes">
+                <!-- <td>{{ scope.id }}</td> -->
+                <td>{{ scope.technology }}</td>
+                <td>{{ scope.scopeDetails }}</td>
+                <td>
+                    <button class="btn btn-primary me-2" (click)="openEditModal(scope)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteScope(scope)">Delete</button>
+                </td>
+            </tr>
+            <tr *ngIf="isNewScope">
+                <!-- <td><input type="text" [(ngModel)]="newScope.id"></td> -->
+                <td><input type="text" [(ngModel)]="newScope.technology" class="form-control"></td>
+                <td><input type="text" [(ngModel)]="newScope.scopeDetails" class="form-control"></td>
+                <td><button class="btn btn-success" (click)="saveNewScope()">Add row</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary me-2" (click)="addNewScope()">+</button>
+    <!-- <button class="btn btn-success" (click)="saveChanges()">Save Changes</button> -->
+</div>

@@ -41,6 +41,8 @@ import { ApprovedTeamEditModalComponent } from './approved-team-edit-modal/appro
 import { ClientFeedbackEditModalComponent } from './client-feedback-edit-modal/client-feedback-edit-modal.component';
 import { DetailedTimelineEditModalComponent } from './detailed-timeline-edit-modal/detailed-timeline-edit-modal.component';
 import { StakeholderEditModalComponent } from './stake-holder-edit-modal/stake-holder-edit-modal.component';
+import { ScopeEditModalComponent } from './scope-edit-modal/scope-edit-modal.component';
+import { EscalationMatrixEditModalComponent } from './escalation-edit-modal/escalation-edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,9 @@ import { StakeholderEditModalComponent } from './stake-holder-edit-modal/stake-h
     ApprovedTeamEditModalComponent,
     ClientFeedbackEditModalComponent,
     DetailedTimelineEditModalComponent,
-    StakeholderEditModalComponent
+    StakeholderEditModalComponent,
+    ScopeEditModalComponent,
+    EscalationMatrixEditModalComponent
   ],
   imports: [
     BrowserModule,

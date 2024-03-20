@@ -3,6 +3,7 @@ import { PhaseMilestone } from '../Models/PhaseMilestone';
 import { PhaseMilestoneService } from '../Service/phaseMilestone.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PhaseMilestoneEditModalComponent } from '../phase-milestone-edit-modal/phase-milestone-edit-modal.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-phase-milestone',
@@ -10,83 +11,90 @@ import { PhaseMilestoneEditModalComponent } from '../phase-milestone-edit-modal/
   styleUrls: ['./phase-milestone.component.css']
 })
 export class PhaseMilestoneComponent implements OnInit {
+  projectId!: string;
+
+  constructor(private phaseMilestoneService: PhaseMilestoneService, private modalService: NgbModal, private router: ActivatedRoute) {
+    this.router.params.subscribe(param => {
+      this.projectId = param['id'];
+      console.log(this.projectId);
+
+    })
+  }
+
 
   phaseMilestones: PhaseMilestone[] = [];
-  isNewRow: boolean = false;
-  newPhaseMilestone: PhaseMilestone = {
-    id: "",
-    projectId: "",
-    title: "",
+  newMilestone: PhaseMilestone = {
+    id: '',
+    projectId: this.projectId,
+    title: '',
     startDate: new Date(),
     endDate: new Date(),
     approvalDate: new Date(),
     status: 0,
     revisedCompletionDate: new Date(),
-    comments: ""
+    comments: ''
   };
+  isNewMilestone: boolean = false;
 
-  constructor(private phaseMilestoneService: PhaseMilestoneService,
-    private modalService: NgbModal) { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    // Fetch phase milestones when component initializes
     this.getPhaseMilestones();
   }
 
-  getPhaseMilestones() {
-    this.phaseMilestoneService.getPhaseMilestones().subscribe(res => {
-      this.phaseMilestones = res.items;
-    });
-    console.log(this.phaseMilestones);
+  getPhaseMilestones(): void {
+    // Assuming PhaseMilestoneService has a method to fetch milestones
+    this.phaseMilestoneService.getPhaseMilestones()
+      .subscribe(milestones => this.phaseMilestones = milestones.items.filter(milestone => milestone.projectId === this.projectId));
   }
 
-  saveChanges(): void {
-
+  addNewMilestone(): void {
+    // Display the form for adding a new milestone
+    this.isNewMilestone = true;
   }
 
-  deletePhaseMilestone(phaseMilestone: PhaseMilestone) {
-    if (confirm('Are you sure you want to delete this phase milestone?')) {
-      this.phaseMilestoneService.deletePhaseMilestone(phaseMilestone.id).subscribe(() => {
-        this.phaseMilestones = this.phaseMilestones.filter(pm => pm.id !== phaseMilestone.id);
-      });
-    }
-  }
-
-  addNewRow() {
-    this.isNewRow = true;
-  }
-
-  saveNewRow() {
-    this.phaseMilestoneService.createPhaseMilestone(this.newPhaseMilestone).subscribe(
-      createdMilestone => {
+  saveNewMilestone(): void {
+    // Save the new milestone
+    this.phaseMilestoneService.createPhaseMilestone({...this.newMilestone, projectId: this.projectId})
+      .subscribe(createdMilestone => {
         this.phaseMilestones.push(createdMilestone);
-        this.isNewRow = false;
-        this.newPhaseMilestone = {
-          id: "",
-          projectId: "",
-          title: "",
+        this.isNewMilestone = false;
+        this.newMilestone = {
+          id: '',
+          projectId: this.projectId,
+          title: '',
           startDate: new Date(),
           endDate: new Date(),
           approvalDate: new Date(),
           status: 0,
           revisedCompletionDate: new Date(),
-          comments: ""
+          comments: ''
         };
-      },
-      error => {
+      }, error => {
         console.error('Error creating new phase milestone:', error);
-      }
-    );
+      });
   }
 
-  openEditModal(phaseMilestone: PhaseMilestone) {
+  deletePhaseMilestone(milestone: PhaseMilestone): void {
+    // Delete the specified milestone
+    if (confirm('Are you sure you want to delete this milestone?')) {
+      this.phaseMilestoneService.deletePhaseMilestone(milestone.id)
+        .subscribe(() => {
+          this.phaseMilestones = this.phaseMilestones.filter(m => m.id !== milestone.id);
+        }, error => {
+          console.error('Error deleting phase milestone:', error);
+        });
+    }
+  }
+
+  openEditModal(milestone: PhaseMilestone) {
+    // Open a modal for editing the milestone
     const modalRef = this.modalService.open(PhaseMilestoneEditModalComponent, { centered: true });
-    modalRef.componentInstance.phaseMilestone = { ...phaseMilestone };
+    modalRef.componentInstance.phaseMilestone = { ...milestone };
     modalRef.componentInstance.saveChangesEvent.subscribe((updatedMilestone: PhaseMilestone) => {
-      const index = this.phaseMilestones.findIndex(h => h.id === updatedMilestone.id);
+      const index = this.phaseMilestones.findIndex(m => m.id === updatedMilestone.id);
       if (index !== -1) {
         this.phaseMilestones[index] = updatedMilestone;
       }
     });
   }
-
 }
