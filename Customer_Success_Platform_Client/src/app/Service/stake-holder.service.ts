@@ -11,8 +11,8 @@ export class StakeHolderService {
   constructor(private http: HttpClient) { }
   private apiUrl = 'https://localhost:44347/api/app/stakholder';
   
-  getAllStakeholders(): Observable<Stakeholder[]> {
-    return this.http.get<Stakeholder[]>(`${this.apiUrl}`);
+  getAllStakeholders(): Observable<{totalCount:number,items:Stakeholder[]}> {
+    return this.http.get<{totalCount:number,items:Stakeholder[]}>(`${this.apiUrl}`);
   }
 
   createStakeholder(stakeholderData: Stakeholder): Observable<Stakeholder> {
@@ -23,8 +23,8 @@ export class StakeHolderService {
     return this.http.get<Stakeholder>(`${this.apiUrl}/${id}`);
   }
 
-  updateStakeholder(id: string, stakeholderData: Stakeholder): Observable<Stakeholder> {
-    return this.http.put<Stakeholder>(`${this.apiUrl}/${id}`, stakeholderData);
+  updateStakeholder(stakeholderData: Stakeholder): Observable<Stakeholder> {
+    return this.http.put<Stakeholder>(`${this.apiUrl}/${stakeholderData.id}`, stakeholderData);
   }
 
   deleteStakeholder(id: string): Observable<any> {

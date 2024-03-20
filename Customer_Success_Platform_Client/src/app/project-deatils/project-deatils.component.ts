@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ApprovedTeam } from '../Models/ApprovedTeam';
 import { ProjectBudget } from '../Models/ProjectBudget';
 import { ClientFeedback } from '../Models/ClientFeedback';
@@ -29,6 +29,7 @@ import { StakeHolderService } from '../Service/stake-holder.service';
 import { ScopeService } from '../Service/scope.service';
 import {EscalationMatrixService} from '../Service/escalation-matrix.service'
 import { ProjectUpdateService } from '../Service/project-update.service';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-project-deatils',
@@ -36,6 +37,7 @@ import { ProjectUpdateService } from '../Service/project-update.service';
   styleUrl: './project-deatils.component.css'
 })
 export class ProjectDeatilsComponent {
+  @ViewChild('content', { static: false }) content!: ElementRef;
   projectId!: string;
   approvedTeams: ApprovedTeam[] = [];
   clientFeedbacks: ClientFeedback[] = [];
@@ -78,7 +80,13 @@ export class ProjectDeatilsComponent {
   }
 
   downloadAsPdf(){
-    
+    const pdf = new jsPDF('p', 'pt', 'a2');
+
+    pdf.html(this.content.nativeElement, {
+      callback: (pdf) => {
+        pdf.save('ProjectDetails.pdf');
+      },
+    });
   }
 
 }

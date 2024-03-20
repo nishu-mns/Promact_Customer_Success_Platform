@@ -1,1 +1,36 @@
-<p>stakeholders works!</p>
+<div class="container py-5">
+    <h3 class="text-center text-uppercase">List of Stakeholders</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="text-center text-uppercase">
+          <!-- <th>Project ID</th> -->
+          <th>Title</th>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stakeholder of stakeholders">
+          <!-- <td>{{ stakeholder.projectId }}</td> -->
+          <td>{{ stakeholder.title }}</td>
+          <td>{{ stakeholder.name }}</td>
+          <td>{{ stakeholder.contact }}</td>
+          <td>
+            <button class="btn btn-primary me-2" (click)="openEditModal(stakeholder)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteStakeholder(stakeholder)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="isNewStakeholder">
+          <!-- <td><input type="text" [(ngModel)]="newStakeholder.projectId"></td> -->
+          <td><input type="text" [(ngModel)]="newStakeholder.title"></td>
+          <td><input type="text" [(ngModel)]="newStakeholder.name"></td>
+          <td><input type="text" [(ngModel)]="newStakeholder.contact"></td>
+          <td><button class="btn btn-success" (click)="saveNewStakeholder()">Add row</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary me-2" (click)="addNewStakeholder()">+</button>
+    <button class="btn btn-success" (click)="saveChanges()">Save Changes</button>
+  </div>
+  

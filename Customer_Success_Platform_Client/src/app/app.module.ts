@@ -40,6 +40,7 @@ import { ScopeComponent } from './scope/scope.component';
 import { ApprovedTeamEditModalComponent } from './approved-team-edit-modal/approved-team-edit-modal.component';
 import { ClientFeedbackEditModalComponent } from './client-feedback-edit-modal/client-feedback-edit-modal.component';
 import { DetailedTimelineEditModalComponent } from './detailed-timeline-edit-modal/detailed-timeline-edit-modal.component';
+import { StakeholderEditModalComponent } from './stake-holder-edit-modal/stake-holder-edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { DetailedTimelineEditModalComponent } from './detailed-timeline-edit-mod
     ApprovedTeamEditModalComponent,
     ClientFeedbackEditModalComponent,
     DetailedTimelineEditModalComponent,
+    StakeholderEditModalComponent
   ],
   imports: [
     BrowserModule,

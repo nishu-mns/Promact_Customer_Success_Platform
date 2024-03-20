@@ -1,14 +1,4 @@
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container">
-        <h2 class="navbar-brand">Customer Success</h2>
-        <form class="form-inline">
-            <div class="input-group">
-                <input class="form-control" id="search-bar" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </div>
-        </form>
-    </div>
-</nav>
+<app-navbar></app-navbar>
 
 <div class="container-fluid">
     <div class="row">
@@ -108,7 +98,7 @@
 
                         </ul>
                         <!-- Bootstrap Tab Content -->
-                        <div class="tab-content" id="projectTabsContent">
+                        <div class="tab-content" id="projectTabsContent" #content>
                             <div class="tab-pane fade show active" id="projectDesc" role="tabpanel"
                                 aria-labelledby="projectDesc-tab">
                                 <app-project-budget></app-project-budget>
@@ -127,7 +117,13 @@
                             </div>
                             <div class="tab-pane fade show active" id="projectStack" role="tabpanel"
                                 aria-labelledby="projectDesc-tab">
-                                <app-audit-history></app-audit-history>
+                                <h3>Project Stack (Tech)</h3>
+                                <li>Backend </li>
+                                <li> Frontend  </li>
+                                <li>Mobile App  </li>
+                                <li>Database  </li>
+                                <li>Infrastructure and Services</li>
+
                             </div>
                             <div class="tab-pane fade show active" id="escalationMatrix" role="tabpanel"
                                 aria-labelledby="projectDesc-tab">
