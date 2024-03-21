@@ -93,7 +93,7 @@ Once both the backend and frontend servers are running, access the application b
 
 1. **Angular:** A TypeScript-based open-source web application framework maintained by Google for building dynamic single-page applications (SPAs) and progressive web applications (PWAs).
 
-2. **Abp.io:** and **ASP.NET:** A web application framework for .NET, designed for building web applications and APIs.
+2. **Abp.io:** and **ASP.NET:** Abp.io is a web application framework for .NET, designed for building web applications and APIs.
 
 4. **PostgreSql:** It is used as a database.
 
