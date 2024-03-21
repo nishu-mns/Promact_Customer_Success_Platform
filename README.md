@@ -1,4 +1,8 @@
-# Promact.CustomerSuccess.Platform
+# Customer Success Platform
+
+## Project Overview
+
+Welcome to the Promact Customer Success Platform! Our platform is designed to streamline your customer success operations and enhance your interactions with clients. Below, you'll find a comprehensive guide on how to set up and run the project locally, along with an overview of the project structure and the technologies we've employed.
 
 ## About this solution
 
@@ -55,7 +59,89 @@ dotnet run --migrate-database
 
 This command will create and seed the initial database. Then you can run the application with any IDE that supports .NET.
 
-### Deploying the application
+## Setup Guide
+
+### Local Setup
+
+1. *Clone the Repository:*
+   
+   ```bash
+   git clone https://github.com/nishu-mns/Promact_Customer_Success_Platform 
+   ```  
+
+### Frontend Setup
+
+1. *Navigate to the Frontend folder:*
+   
+    ```bash
+    cd Customer_Success_Platform_Client
+    ```
+   
+
+2. *Install Dependencies:*
+   
+    ```bash
+    npm install
+    ```
+   
+
+3. *Start the Frontend Server:*
+   
+   ```bash
+    ng serve --o
+   ```
+
+Once both the backend and frontend servers are running, access the application by navigating to the provided URL in your browser.
+
+
+## Technologies Used
+
+1. *Angular:* A TypeScript-based open-source web application framework maintained by Google for building dynamic single-page applications (SPAs) and progressive web applications (PWAs).
+
+2. *Abp.io:* and *ASP.NEt:* A web application framework for .NET, designed for building web applications and APIs.
+
+4. *PostgreSql:* It is used as a database.
+
+## Why Customer Success Platform?
+
+The Customer Success Platform addresses several key objectives:
+
+1. *Enhanced Communication:* Improving transparency and keeping stakeholders informed about updates and changes within the system.
+2. *Efficiency:* Automating notification processes to save time and effort compared to manual methods.
+3. *Improved Stakeholder Engagement:* Providing timely updates to increase stakeholder engagement and satisfaction.
+4. *Competitive Advantage:* Offering a transparent and responsive communication process to differentiate from competitors.
+
+## About the Project
+
+The Customer Success Platform aims to optimize customer success operations by providing a centralized hub for managing client interactions. Key features include:
+
+- *Client Management:* Easily manage client information and interactions.
+
+- *Task Tracking:* Keep track of tasks and deadlines related to client accounts.
+
+- *Communication Tools:* Facilitate seamless communication with clients through integrated messaging features.
+
+- *Analytics Dashboard:* Gain insights into customer satisfaction and engagement metrics through interactive dashboards.
+
+## Functionality
+
+### Email Notification System
+
+A system to send email notifications to stakeholders for updates and changes within the platform.
+
+### Export as a Document
+
+Implement functionality to export project details as a document in a predefined format.
+
+### CRUD operations for all tables
+
+You can add, update, read or delete informations related to the projects according to your roll.
+
+## Third-party Integration
+
+Implemented "Auth0 authentication" for seamless login and logout functionalities. Utilizing the single-page application (SPA) architecture, users can securely access the system, enhancing both user experience and data security.
+
+## Deploying the application
 
 Deploying an ABP application is not different than deploying any .NET or ASP.NET Core application. However, there are some topics that you should care about when you are deploying your applications. You can check ABP's [Deployment documentation](https://docs.abp.io/en/abp/latest/Deployment/Index) before deploying your application.
 
