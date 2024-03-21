@@ -63,7 +63,7 @@ This command will create and seed the initial database. Then you can run the app
 
 ### Local Setup
 
-1. *Clone the Repository:*
+1. **Clone the Repository:**
    
    ```bash
    git clone https://github.com/nishu-mns/Promact_Customer_Success_Platform 
@@ -71,22 +71,17 @@ This command will create and seed the initial database. Then you can run the app
 
 ### Frontend Setup
 
-1. *Navigate to the Frontend folder:*
-   
+1. **Navigate to the Frontend folder:**
     ```bash
     cd Customer_Success_Platform_Client
     ```
-   
 
-2. *Install Dependencies:*
-   
+2. **Install Dependencies:**
     ```bash
     npm install
     ```
-   
 
-3. *Start the Frontend Server:*
-   
+3. **Start the Frontend Server:**
    ```bash
     ng serve --o
    ```
@@ -96,32 +91,32 @@ Once both the backend and frontend servers are running, access the application b
 
 ## Technologies Used
 
-1. *Angular:* A TypeScript-based open-source web application framework maintained by Google for building dynamic single-page applications (SPAs) and progressive web applications (PWAs).
+1. **Angular:** A TypeScript-based open-source web application framework maintained by Google for building dynamic single-page applications (SPAs) and progressive web applications (PWAs).
 
-2. *Abp.io:* and *ASP.NEt:* A web application framework for .NET, designed for building web applications and APIs.
+2. **Abp.io:** and **ASP.NET:** A web application framework for .NET, designed for building web applications and APIs.
 
-4. *PostgreSql:* It is used as a database.
+4. **PostgreSql:** It is used as a database.
 
 ## Why Customer Success Platform?
 
 The Customer Success Platform addresses several key objectives:
 
-1. *Enhanced Communication:* Improving transparency and keeping stakeholders informed about updates and changes within the system.
-2. *Efficiency:* Automating notification processes to save time and effort compared to manual methods.
-3. *Improved Stakeholder Engagement:* Providing timely updates to increase stakeholder engagement and satisfaction.
-4. *Competitive Advantage:* Offering a transparent and responsive communication process to differentiate from competitors.
+1. **Enhanced Communication:** Improving transparency and keeping stakeholders informed about updates and changes within the system.
+2. **Efficiency:** Automating notification processes to save time and effort compared to manual methods.
+3. **Improved Stakeholder Engagement:** Providing timely updates to increase stakeholder engagement and satisfaction.
+4. **Competitive Advantage:** Offering a transparent and responsive communication process to differentiate from competitors.
 
 ## About the Project
 
 The Customer Success Platform aims to optimize customer success operations by providing a centralized hub for managing client interactions. Key features include:
 
-- *Client Management:* Easily manage client information and interactions.
+- **Client Management:** Easily manage client information and interactions.
 
-- *Task Tracking:* Keep track of tasks and deadlines related to client accounts.
+- **Task Tracking:** Keep track of tasks and deadlines related to client accounts.
 
-- *Communication Tools:* Facilitate seamless communication with clients through integrated messaging features.
+- **Communication Tools:** Facilitate seamless communication with clients through integrated messaging features.
 
-- *Analytics Dashboard:* Gain insights into customer satisfaction and engagement metrics through interactive dashboards.
+- **Analytics Dashboard:** Gain insights into customer satisfaction and engagement metrics through interactive dashboards.
 
 ## Functionality
 
