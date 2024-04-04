@@ -11,7 +11,6 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos
         public string Status { get; set; }
         public string ProjectManager { get; set; }
         public int Members { get; set; }
-        public IEnumerable<DocumentDto>? Documents { get; set; }
         public IEnumerable<ProjectBudgetDto>? Budgets { get; set; }
         public IEnumerable<EscalationMatrixDto>? EscalationMatrices { get; set; }
         public IEnumerable<RiskProfileDto>? RiskProfiles { get; set; }

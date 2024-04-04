@@ -21,9 +21,6 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     }
 
     public DbSet<Project> Projects { get; set; }
-    public DbSet<Document> Documents { get; set; }
-    public DbSet<DocumentVersion> DocumentVersions { get; set; }
-    public DbSet<Organization> Organizations { get; set; }
     public DbSet<ClientFeedback> ClientFeedbacks { get; set; }
     public DbSet<ProjectBudget> ProjectBudgets { get; set; }
     public DbSet<PhaseMilestone> PhaseMilestones { get; set; }
@@ -56,10 +53,7 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.ConfigureFeatureManagement();
         builder.ConfigureTenantManagement();
         
-        builder.Entity<DocumentVersion>(entity =>
-        {                        
-            entity.ConfigureByConvention();
-        });
+        
         builder.Entity<PhaseMilestone>(entity =>
         {                        
             entity.ConfigureByConvention();
@@ -71,10 +65,6 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.Entity<MeetingMinute>(MeetingMinute =>
         {            
             MeetingMinute.ConfigureByConvention();
-        });
-        builder.Entity<Organization>(Organization =>
-        {
-            Organization.ConfigureByConvention();
         });
         builder.Entity<Project>(Project =>
         {
@@ -119,11 +109,7 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         builder.Entity<ProjectUpdate>(ProjectUpdate =>
         {
             ProjectUpdate.ConfigureByConvention();
-        });
-        builder.Entity<Document>(Document =>
-        {
-            Document.ConfigureByConvention();
-        });
+        }); 
         builder.Entity<ApplicationUser>(ApplicationUser =>
         {
             ApplicationUser.ConfigureByConvention();

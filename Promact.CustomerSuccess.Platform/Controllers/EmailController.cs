@@ -2,8 +2,11 @@
 using MimeKit;
 using MailKit.Net.Smtp;
 using MimeKit.Text;
-using System.Text;
+using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Promact.CustomerSuccess.Platform.Services.Dtos;
 
 namespace Promact.CustomerSuccess.Platform.Controllers
 {
@@ -17,7 +20,7 @@ namespace Promact.CustomerSuccess.Platform.Controllers
         private const string EmailPassword = "vxattbwliievgkef";
 
         [HttpPost("send")]
-        public IActionResult SendEmails([FromBody] List<EmailDto> emails)
+        public async Task<IActionResult> SendEmails([FromBody] List<EmailDto> emails)
         {
             if (emails == null || emails.Count == 0)
             {
@@ -26,17 +29,16 @@ namespace Promact.CustomerSuccess.Platform.Controllers
 
             foreach (var email in emails)
             {
-                SendEmail(email);
+                await SendEmail(email);
             }
 
-            return Ok();
+            return Ok("Emails sent successfully.");
         }
 
-        private void SendEmail(EmailDto email)
+        private async Task SendEmail(EmailDto email)
         {
             foreach (var recipient in email.Recipients)
             {
-
                 if (!IsValidEmailAddress(recipient))
                 {
                     Console.WriteLine("Not valid address..:(");
@@ -48,19 +50,18 @@ namespace Promact.CustomerSuccess.Platform.Controllers
                 mimeMessage.From.Add(new MailboxAddress("noReply", EmailUsername));
                 mimeMessage.To.Add(MailboxAddress.Parse(recipient));
                 mimeMessage.Subject = email.Subject;
-                mimeMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+                mimeMessage.Body = new TextPart(TextFormat.Html)
                 {
                     Text = email.Body
                 };
 
                 using var smtpClient = new SmtpClient();
-                smtpClient.Connect(EmailHost, EmailPort, MailKit.Security.SecureSocketOptions.StartTls);
-                smtpClient.Authenticate(EmailUsername, EmailPassword);
-                smtpClient.Send(mimeMessage);
-                smtpClient.Disconnect(true);
+                await smtpClient.ConnectAsync(EmailHost, EmailPort, MailKit.Security.SecureSocketOptions.StartTls);
+                await smtpClient.AuthenticateAsync(EmailUsername, EmailPassword);
+                await smtpClient.SendAsync(mimeMessage);
+                await smtpClient.DisconnectAsync(true);
             }
         }
-
 
         private static bool IsValidEmailAddress(string emailAddress)
         {
@@ -68,10 +69,7 @@ namespace Promact.CustomerSuccess.Platform.Controllers
             {
                 // Regular expression pattern for validating email address
                 string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-
-
                 Regex regex = new Regex(pattern);
-
                 return regex.IsMatch(emailAddress);
             }
             catch
@@ -80,15 +78,4 @@ namespace Promact.CustomerSuccess.Platform.Controllers
             }
         }
     }
-
-
-
-
-}
-
-public class EmailDto
-{
-    public string Subject { get; set; }
-    public string Body { get; set; }
-    public List<string> Recipients { get; set; }
 }

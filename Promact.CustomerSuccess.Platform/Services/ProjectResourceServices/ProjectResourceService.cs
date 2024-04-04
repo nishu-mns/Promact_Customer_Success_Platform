@@ -6,7 +6,13 @@ using Volo.Abp.Domain.Repositories;
 
 namespace Promact.CustomerSuccess.Platform.Services.ProjectResourceServices
 {
-    public class ProjectResourceService : CrudAppService<ProjectResources, ProjectResourcesDto, Guid, PagedAndSortedResultRequestDto, CreateProjectResourceDto, UpdateProjectResourceDto>,
+    public class ProjectResourceService : 
+        CrudAppService<ProjectResources,
+            ProjectResourcesDto, 
+            Guid, 
+            PagedAndSortedResultRequestDto, 
+            CreateProjectResourceDto, 
+            UpdateProjectResourceDto>,
         IProjectResourceService
     {
         public ProjectResourceService(IRepository<ProjectResources, Guid> repository) : base(repository)

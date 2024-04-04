@@ -5,7 +5,7 @@ using Volo.Abp.Users;
 
 namespace Promact.CustomerSuccess.Platform.Entities
 {
-    public class ApplicationUser : Entity<Guid>, IUser
+    public class ApplicationUser : Entity<Guid>
     {
         public required string Name { get; set; }
 
@@ -22,12 +22,5 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public required string PhoneNumber { get; set; }
 
         public bool PhoneNumberConfirmed { get; set; }
-
-        [ForeignKey("Organization")]
-        public Guid? TenantId { get; set; }
-
-        public virtual Organization? Organization { get; set; }        
-
-        public ExtraPropertyDictionary? ExtraProperties { get; set; }
     }
 }

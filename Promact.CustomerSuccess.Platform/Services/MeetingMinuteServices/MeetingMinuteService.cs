@@ -6,7 +6,14 @@ using Volo.Abp.Domain.Repositories;
 
 namespace Promact.CustomerSuccess.Platform.Services.MeetingMinuteServices
 {
-    public class MeetingMinuteService : CrudAppService<MeetingMinute, MeetingMinuteDto, Guid, PagedAndSortedResultRequestDto, CreateMeetingMinuteDto, UpdateMeetingMinuteDto>, IMeetingMinuteService
+    public class MeetingMinuteService : 
+        CrudAppService<MeetingMinute, 
+            MeetingMinuteDto, 
+            Guid, 
+            PagedAndSortedResultRequestDto, 
+            CreateMeetingMinuteDto, 
+            UpdateMeetingMinuteDto>, 
+        IMeetingMinuteService
     {
         public MeetingMinuteService(IRepository<MeetingMinute, Guid> repository) : base(repository)
         {
